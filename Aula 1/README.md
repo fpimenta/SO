@@ -10,14 +10,16 @@ Escreva o programa fibonacci que calcula e apresenta na consola os primeiros 10 
 ### Ex 2
 O programa em input.c, apresentado na aula teórica, usa a função `scanf()` da biblioteca de C para ler um inteiro.
  a) Execute-o mas, em vez de digitar um nº inteiro como pedido, digite p.ex.  uma palavra. Qual o resultado?
+ 
+ 
  b) Altere o programa para i) validar o valor entrado e ii) ou apresentar esse valor ou então apresentar uma mensagem de erro.
  **Dica:** Leia o manual da função `scanf()`: **man 3 scanf**
 
 ### Ex 3
 
 Neste exercício pretende-se que use o operador sizeof da linguagem C para determinar o tamanho ocupado em memória por variáveis ou constantes de diferentes tipos.
+
  a) Escreva um programa que determina o tamanho de variáveis com os seguintes tipos básicos: `char, short int, int, long int, float, double, void *`.
- 
  
  b) Escreva uma nova versão do mesmo programa que apresente o tamanho das variáveis declaradas no segmento de código seguinte:
 
@@ -40,10 +42,11 @@ Verifique se a sua resposta está correcta. Procure explicar os valores que obte
 ### Ex 4
 Neste exercício pretende-se ilustrar o uso de apontadores para transferir dados duma função para a função que a invoca.
  a) Escreva a função:
-`void in_fibonacci(int *fib, int n) `
-a qual preenche a região de memória que lhe é passada no primeiro argumento com os n primeiros elementos da série de Fibonacci.
+`void in_fibonacci(int *fib, int n) ` a qual preenche a região de memória que lhe é passada no primeiro argumento com os n primeiros elementos da série de Fibonacci.
+
  b) Escreva a função `main()` a qual deverá invocar a função `in_fibonacci()` e após os seu retorno imprimir na consola os valores preenchidos por `in_fibonacci()`.
-IMP.- A região de memória passada a `in_fibonacci()` deverá ter o espaço necessário para armazenar n inteiros. Duas possibilidades são: 1) usar alocação estática declarando um vector com pelo menos n inteiros; 2) usar alocação dinâmica de memória, i.e. usar a função `malloc()`.
+ 
+**IMP.** - A região de memória passada a `in_fibonacci()` deverá ter o espaço necessário para armazenar n inteiros. Duas possibilidades são: 1) usar alocação estática declarando um vector com pelo menos n inteiros; 2) usar alocação dinâmica de memória, i.e. usar a função `malloc()`.
 
 ### Ex 5
 
