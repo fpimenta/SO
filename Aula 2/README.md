@@ -7,7 +7,6 @@
     2. Porque razão a implementação duma chamada ao sistema exige instruções não necessárias na implementação de funções?
     3. No entanto, do ponto de vista sintático, para um programador, uma chamada ao sistema parece ser uma função. Porquê?
 
-* * *
 
 ## Problemas
 
