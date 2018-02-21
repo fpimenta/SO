@@ -58,11 +58,12 @@ typedef struct {
         int notas[3];
 } teste_t;
 ``` 
-    1. Escreva um programa que crie um ficheiro “binário” que armazene registos do tipo teste_t, i.e. as classificações 
-    num teste com 3 perguntas. Os campos de cada registo deverão ser perguntados ao utilizador.
-    O seu programa deverá tomar como argumento o nome do ficheiro, o qual já pode existir.
-    2. Escreva um programa que leia um ficheiro criado pelo programa da alínea anterior, e escreva na saída 
-    os valores dos campos de cada registo, um registo por linha.
+
+   1. Escreva um programa que crie um ficheiro “binário” que armazene registos do tipo teste_t, i.e. as classificações 
+   num teste com 3 perguntas. Os campos de cada registo deverão ser perguntados ao utilizador.
+   O seu programa deverá tomar como argumento o nome do ficheiro, o qual já pode existir.
+   2. Escreva um programa que leia um ficheiro criado pelo programa da alínea anterior, e escreva na saída 
+   os valores dos campos de cada registo, um registo por linha.
     
 
 ### Ex 4
