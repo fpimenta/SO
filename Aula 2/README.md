@@ -1,4 +1,4 @@
-### Questões
+## Questões
 
 1. Os sistemas operativos (SO) são frequentemente apresentados quer como uma **máquina virtual** quer como uma **gestor de recursos**. Explique cada uma destas facetas dum SO.
 2. Uma das abstracções suportadas por um SO é o de processo. Diga o que é um processo? Descreva dois serviços dum SO relacionados com a gestão de processos.
@@ -9,29 +9,34 @@
 
 * * *
 
-### Problemas
+## Problemas
 
 **IMP.** Os seus programas deverão usar as **chamadas ao sistema** para acesso a ficheiros e **não** as funções de 
 manipulação de _streams_ da biblioteca C.
 
-1. Considere a cópia de um ficheiro.
-    1. Escreva um programa que faz a cópia do ficheiro cujo nome lhe é passado como primeiro argumento 
+### Ex 1
+    
+   Considere a cópia de um ficheiro.
+    
+   1. Escreva um programa que faz a cópia do ficheiro cujo nome lhe é passado como primeiro argumento 
     para a saída _standard_, à semelhança do utilitário cat quando invocado com um único argumento.No final 
     o seu programa deverá imprimir o comprimento total do ficheiro. (Confirme o resultado usando o comando wc -c.) 
     
-    **IMP** Para garantir que a chamada ao sistema read tem que ser invocada múltiplas vezes 
+   **IMP** Para garantir que a chamada ao sistema read tem que ser invocada múltiplas vezes 
     use _buffers_ de tamanho reduzido, p.ex. 256 bytes, e teste os seus programas com o código C respectivo. 
     
-    2. Escreva uma versão do programa da alínea anterior tal que copia o ficheiro cujo nome lhe é passado 
+   2. Escreva uma versão do programa da alínea anterior tal que copia o ficheiro cujo nome lhe é passado 
     como primeiro argumento para um ficheiro cujo nome lhe é passado com segundo argumento.
     
-    **IMP.** O seu programa deverá assinalar erro se o segundo argumento for o nome dum ficheiro que já existe. 
+   **IMP.** O seu programa deverá assinalar erro se o segundo argumento for o nome dum ficheiro que já existe. 
     Confirme o resultado do seu programa usando o comando diff. 
     
     
 **Sugestão** Leia [as Secções 2.1 e 2.3 das notas do Prof. Pimenta Monteiro sobre ficheiros](http://web.fe.up.pt/~pfs/aulas/old/so2001/ap/cap2.pdf), bem como as _man pages_ das chamadas ao sistema nelas descritas. 
 
-2. O utilitário split parte um ficheiro em múltiplos ficheiros (para mais pormenores consulte a sua _man page_).
+### Ex 2
+
+O utilitário split parte um ficheiro em múltiplos ficheiros (para mais pormenores consulte a sua _man page_).
 Escreva o programa merge o qual reconstrói um ficheiro a partir dos ficheiros gerados por split. 
 Assume-se que estes ficheiros se encontram no directório onde merge é invocado. 
 merge deve ser invocado da seguinte maneira: 
@@ -43,8 +48,9 @@ merge deve ser invocado da seguinte maneira:
 
 **Sugestão**: Use as funções de manipulação de _strings_ da biblioteca C (man 3 string). 
 
+### Ex 3
 
-3. Considere as seguintes declarações:
+Considere as seguintes declarações:
 
 ```c
 typedef char nome[30];
@@ -60,7 +66,9 @@ typedef struct {
     os valores dos campos de cada registo, um registo por linha.
     
 
-4. Escreva o programa sample o qual “amostra” um ficheiro.Este programa deve ser invocado da seguinte forma: 
+### Ex 4
+
+Escreva o programa sample o qual “amostra” um ficheiro.Este programa deve ser invocado da seguinte forma: 
 
     ` sample <filename> <offset>`
 onde 
@@ -81,7 +89,9 @@ sobre ficheiros](http://web.fe.up.pt/~pfs/aulas/old/so2001/ap/cap2.pdf)
 **Sugestão** Para avançar o _cursor_ do ficheiro poderá usar a chamada ao sistema lseek. 
 Leia a sua _man page_ bem como a [sua descrição na Secção 2.3 das notas do Prof. Pimenta Monteiro sobre ficheiros](http://web.fe.up.pt/~pfs/aulas/old/so2001/ap/cap2.pdf) 
 
-5. Considere o problema 1, acima. Escreva uma nova versão a qual deverá comportar-se como descrito ou em a. ou em b.
+### Ex 5
+
+Considere o problema 1, acima. Escreva uma nova versão a qual deverá comportar-se como descrito ou em a. ou em b.
 desse problema, dependendo do número de argumentos da linha de comando.
 **IMPORTANTE** A sua solução tem que usar a chamada ao sistema dup2(). 
 
