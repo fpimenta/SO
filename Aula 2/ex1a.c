@@ -11,7 +11,10 @@ int main(int argc,char* argv[]){
 	char buff[BUF_SIZE];
 	totby = 0;
 	
-	if(argc!=2) printf("Error: Argument is missing!\n");
+	if(argc!=2){
+		printf("Error: Argument is missing!");
+		exit(1);
+	}
 	filedes = open(argv[1],O_RDONLY);
 	
 	while(1){
