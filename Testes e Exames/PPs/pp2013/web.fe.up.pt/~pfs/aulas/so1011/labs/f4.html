@@ -1,0 +1,105 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"
+            "http://www.w3.org/TR/REC-html40/loose.dtd">
+<HTML>
+<HEAD>
+<TITLE>f4</TITLE>
+
+<META http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta name="generator" content="Bluefish 1.0.7">
+<STYLE type="text/css">
+.li-itemize{margin:1ex 0ex;}
+.li-enumerate{margin:1ex 0ex;}
+.dd-description{margin:0ex 0ex 1ex 4ex;}
+.dt-description{margin:0ex;}
+.toc{list-style:none;}
+.thefootnotes{text-align:left;margin:0ex;}
+.dt-thefootnotes{margin:0em;}
+.dd-thefootnotes{margin:0em 0em 0em 2em;}
+.footnoterule{margin:1em auto 1em 0px;width:50%;}
+.caption{padding-left:2ex; padding-right:2ex; margin-left:auto; margin-right:auto}
+.title{margin:2ex auto;text-align:center}
+.center{text-align:center;margin-left:auto;margin-right:auto;}
+.flushleft{text-align:left;margin-left:0ex;margin-right:auto;}
+.flushright{text-align:right;margin-left:auto;margin-right:0ex;}
+DIV TABLE{margin-left:inherit;margin-right:inherit;}
+PRE{text-align:left;margin-left:0ex;margin-right:auto;}
+BLOCKQUOTE{margin-left:4ex;margin-right:4ex;text-align:left;}
+TD P{margin:0px;}
+.boxed{border:1px solid black}
+.textboxed{border:1px solid black}
+.vbar{border:none;width:2px;background-color:black;}
+.hbar{border:none;height:2px;width:100%;background-color:black;}
+.hfill{border:none;height:1px;width:200%;background-color:black;}
+.vdisplay{border-collapse:separate;border-spacing:2px;width:auto; empty-cells:show; border:2px solid red;}
+.vdcell{white-space:nowrap;padding:0px;width:auto; border:2px solid green;}
+.display{border-collapse:separate;border-spacing:2px;width:auto; border:none;}
+.dcell{white-space:nowrap;padding:0px;width:auto; border:none;}
+.dcenter{margin:0ex auto;}
+.vdcenter{border:solid #FF8000 2px; margin:0ex auto;}
+.minipage{text-align:left; margin-left:0em; margin-right:auto;}
+.marginpar{border:solid thin black; width:20%; text-align:left;}
+.marginparleft{float:left; margin-left:0ex; margin-right:1ex;}
+.marginparright{float:right; margin-left:1ex; margin-right:0ex;}
+.theorem{text-align:left;margin:1ex auto 1ex 0ex;}
+.part{margin:2ex auto;text-align:center}
+</STYLE>
+</HEAD>
+<BODY >
+<!--HEVEA command line is: /usr/bin/hevea f4 -->
+<!--CUT DEF section 1 --><!--TOC paragraph <FONT SIZE=4><B>Arquitecturas e Sistemas Operativos (2ª Parte)</B></FONT><FONT SIZE=4> 
+</FONT><FONT SIZE=4><B>3º Ano MIEEC</B></FONT><FONT SIZE=4><BR>
+ </FONT><FONT SIZE=4><B>Folha nº 4: POSIX Threads (1ª Parte)</B></FONT><FONT SIZE=4><BR>
+</FONT>-->
+<H5 CLASS="paragraph"><!--SEC ANCHOR --><FONT SIZE=4><B>Sistemas Operativos</B></FONT><FONT SIZE=4> 
+</FONT><FONT SIZE=4><B>3º Ano MIEEC</B></FONT><FONT SIZE=4><BR>
+ </FONT><FONT SIZE=4><B>Folha nº 4: POSIX Threads (1ª Parte)</B></FONT><FONT SIZE=4><BR>
+</FONT></H5><!--SEC END -->
+<HR><!--TOC section Questões-->
+<H2 CLASS="section"><!--SEC ANCHOR -->Questões</H2><!--SEC END --><OL CLASS="enumerate" type=1><LI CLASS="li-enumerate">
+Considere a implementação com múltiplos <I>threads</I> dum servidor <I>Web</I> discutido na aula teórica. Em princípio, seria possível realizar uma implementação semelhante usando apenas processos. Qual é a principal vantagem de usar <I>threads</I> em vez de processos?
+</LI><LI CLASS="li-enumerate">Nas transparências das aulas teórico-práticas escrevi:
+<BLOCKQUOTE CLASS="quote">
+"Grosso modo, enquanto que um processo corresponde à execução dum programa, um <I>thread</I> corresponde à execução duma função."
+</BLOCKQUOTE>
+Explique esta afirmação à luz da API POSIX para <I>threads</I> e do ciclo de vida dum <I>thread</I> POSIX.
+</LI><LI CLASS="li-enumerate">De acordo com o protótipo de <TT>pthread_create()</TT> o protótipo da função a executar pelo <I>thread</I> criado deverá ser:
+<PRE CLASS="verbatim">void *fun(void *arg)
+</PRE><OL CLASS="enumerate" type=a><LI CLASS="li-enumerate">
+Por que razão quer o argumento quer o valor de retorno são do tipo <TT>void *</TT> e não, p.ex. ,<TT>int *</TT>?
+</LI><LI CLASS="li-enumerate">Como é possível obter o valor retornado pela função <TT>fun()</TT> executada pelo <I>thread</I> criado?
+</LI><LI CLASS="li-enumerate">Explique por que razão um <I>thread</I> não deve retornar o endereço duma variável local automática declarada dentro de <TT>fun</TT>.
+</LI><LI CLASS="li-enumerate">No caso de processos Unix/Linux, quando um processo termina, o valor por ele retornado pode ser recebido apenas pelo processo pai. A API POSIX (i.e. de <TT>libpthread</TT>, impõe restrições semelhantes?
+</LI></OL>
+</LI></OL><!--TOC section Problemas-->
+<H2 CLASS="section"><!--SEC ANCHOR -->Problemas</H2><!--SEC END --><!--TOC paragraph Nota-->
+<H5 CLASS="paragraph"><!--SEC ANCHOR -->Nota</H5><!--SEC END --><P> Os seus programas deverão usar a biblioteca <CODE>libpthread</CODE>. Não se esqueça de indicá-lo ao compilador, i.e. especificar <CODE>-lpthread</CODE> na linha de comandos.</P><P>Deverá ainda definir a variável <CODE>_REENTRANT</CODE> na linha de comandos do
+<CODE>gcc</CODE>, usando o argumento <CODE>-D_REENTRANT</CODE>, para garantir que
+o compilador usa as funções apropriadas da biblioteca C.</P><OL CLASS="enumerate" type=1><LI CLASS="li-enumerate">Escreva um programa cujo <I>thread</I> principal cria 3 novos
+<I>threads</I>. Cada <I>thread</I> (diferente do principal) deve
+escrever os seus <CODE>pid</CODE> e <CODE>tid</CODE> e terminar retornando um
+número inteiro entre 1 e 3 distinto do retornado pelos restantes
+<I>threads</I>. O <I>thread</I> principal deve escrever no
+terminal o seu <CODE>pid</CODE> e o valor retornado por cada um dos outros
+<I>threads</I>.<OL CLASS="enumerate" type=a><LI CLASS="li-enumerate">
+Qual a relação entre os <CODE>pid</CODE>s dos diferentes
+<I>threads</I> dum programa? E os seus <CODE>tids</CODE>?
+</LI><LI CLASS="li-enumerate">O que acontece se o <I>thread</I> principal não esperar pelos
+restantes? Teste.
+</LI></OL></LI><LI CLASS="li-enumerate">Escreva um nova versão do programa anterior na qual o número de
+novos <I>threads</I> a criar, <I>n</I>, é passado através da
+linha de comando. Cada <I>thread</I> (diferente do principal)
+deve escrever o seu <CODE>tid</CODE> e terminar retornando um número
+inteiro entre 1 e <I>n</I> distinto do retornado pelos restantes
+<I>threads</I>.<P><B>Dica</B> Usa a função <CODE>strtol</CODE> para converter o argumento
+da linha de comando num inteiro.</P><P>Teste o seu programa para diferentes valores de <I>n</I>.</P></LI><LI CLASS="li-enumerate">Escreva um programa <I>multi-threaded</I> para inicializar um
+vector de inteiros.<P>O seu programa deverá aceitar 2 argumentos de tipo inteiro: o número de elementos do vector e o número de <I>threads</I> que farão a sua inicialização, por esta ordem.</P><P>O <I>thread</I> principal deverá processar os argumentos e criar os <I>threads</I> que fazem a inicialização do vector. Após a inicialização do vector, o <I>thread</I> principal deverá listar cada um dos elementos do vector.</P><P>Cada um dos <I>threads</I> criados pelo <I>thread</I> principal deverá inicicializar a <I>sua parte</I> do vector. O elemento <CODE>i</CODE> do vector deverá ser inicializado com o inteiro <I>i</I>.</P><P><B>Dica</B> Identifique os dados que cada <I>thread</I> precisa
+para processar o seu <I>sub-vector</I> e defina uma estrutura de
+dados que o <I>thread</I> principal usará para passar esses dados
+como argumento aos restantes <I>threads</I>.</P></LI><LI CLASS="li-enumerate">Se, no programa anterior, o número de elementos inicializados por qualquer <I>thread</I> diferir em mais de 1 da média, escreva uma nova versão onde tal não se verifique. <P>Cada um dos <I>threads</I> deverá imprimir informação no <I>stdout</I> para ilustrar que funciona correctamente.</P><P><B>Dica</B> Use as operações divisão inteira e resto da divisão inteira.
+</P></LI></OL><!--CUT END -->
+<!--HTMLFOOT-->
+<!--ENDHTML-->
+<!--FOOTER-->
+<HR SIZE=2><BLOCKQUOTE CLASS="quote"><EM>This document was translated from L<sup>A</sup>T<sub>E</sub>X by
+</EM><A HREF="http://hevea.inria.fr/index.html"><EM>H</EM><EM><FONT SIZE=2><sup>E</sup></FONT></EM><EM>V</EM><EM><FONT SIZE=2><sup>E</sup></FONT></EM><EM>A</EM></A><EM>.</EM></BLOCKQUOTE></BODY>
+</HTML>

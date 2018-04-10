@@ -1,0 +1,20 @@
+$ ./ppd 3 5 10000
+Checker: starting
+
+   Baby bird 0 beginning
+   Baby bird 2 beginning
+   Baby bird 1 beginning
+	Parent starting
+	Parent finishing
+   Baby bird 0 finishing
+   Baby bird 2 finishing
+Number of bits of food eaten by baby 0: 16300 / 50000 
+   Baby bird 1 finishing
+Checker: finishing time!
+
+Checker: exiting
+
+Number of bits of food eaten by baby 1: 16024 / 50000 
+Number of bits of food eaten by baby 2: 17676 / 50000 
+
+Simulation finished

@@ -1,0 +1,121 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"
+            "http://www.w3.org/TR/REC-html40/loose.dtd">
+<HTML>
+<HEAD>
+<TITLE>f5</TITLE>
+
+<META http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta name="generator" content="Bluefish 1.0.7">
+<STYLE type="text/css">
+.li-itemize{margin:1ex 0ex;}
+.li-enumerate{margin:1ex 0ex;}
+.dd-description{margin:0ex 0ex 1ex 4ex;}
+.dt-description{margin:0ex;}
+.toc{list-style:none;}
+.thefootnotes{text-align:left;margin:0ex;}
+.dt-thefootnotes{margin:0em;}
+.dd-thefootnotes{margin:0em 0em 0em 2em;}
+.footnoterule{margin:1em auto 1em 0px;width:50%;}
+.caption{padding-left:2ex; padding-right:2ex; margin-left:auto; margin-right:auto}
+.title{margin:2ex auto;text-align:center}
+.center{text-align:center;margin-left:auto;margin-right:auto;}
+.flushleft{text-align:left;margin-left:0ex;margin-right:auto;}
+.flushright{text-align:right;margin-left:auto;margin-right:0ex;}
+DIV TABLE{margin-left:inherit;margin-right:inherit;}
+PRE{text-align:left;margin-left:0ex;margin-right:auto;}
+BLOCKQUOTE{margin-left:4ex;margin-right:4ex;text-align:left;}
+TD P{margin:0px;}
+.boxed{border:1px solid black}
+.textboxed{border:1px solid black}
+.vbar{border:none;width:2px;background-color:black;}
+.hbar{border:none;height:2px;width:100%;background-color:black;}
+.hfill{border:none;height:1px;width:200%;background-color:black;}
+.vdisplay{border-collapse:separate;border-spacing:2px;width:auto; empty-cells:show; border:2px solid red;}
+.vdcell{white-space:nowrap;padding:0px;width:auto; border:2px solid green;}
+.display{border-collapse:separate;border-spacing:2px;width:auto; border:none;}
+.dcell{white-space:nowrap;padding:0px;width:auto; border:none;}
+.dcenter{margin:0ex auto;}
+.vdcenter{border:solid #FF8000 2px; margin:0ex auto;}
+.minipage{text-align:left; margin-left:0em; margin-right:auto;}
+.marginpar{border:solid thin black; width:20%; text-align:left;}
+.marginparleft{float:left; margin-left:0ex; margin-right:1ex;}
+.marginparright{float:right; margin-left:1ex; margin-right:0ex;}
+.theorem{text-align:left;margin:1ex auto 1ex 0ex;}
+.part{margin:2ex auto;text-align:center}
+</STYLE>
+</HEAD>
+<BODY >
+<!--HEVEA command line is: /usr/bin/hevea f5 -->
+<!--CUT DEF section 1 --><!--TOC paragraph <FONT SIZE=4><B>Arquitecturas e Sistemas Operativos (2ª Parte)</B></FONT><FONT SIZE=4> 
+</FONT><FONT SIZE=4><B>3º Ano MIEEC</B></FONT><FONT SIZE=4><BR>
+ </FONT><FONT SIZE=4><B>Folha nº 5: </B></FONT><FONT SIZE=4><B><I>Mutexes</I></B></FONT><FONT SIZE=4><B> POSIX</B></FONT><FONT SIZE=4><BR>
+</FONT>-->
+<H5 CLASS="paragraph"><!--SEC ANCHOR --><FONT SIZE=4><B>Sistemas Operativos</B></FONT><FONT SIZE=4> 
+</FONT><FONT SIZE=4><B>3º Ano MIEEC</B></FONT><FONT SIZE=4><BR>
+ </FONT><FONT SIZE=4><B>Folha nº 5: </B></FONT><FONT SIZE=4><B><I>Mutexes</I></B></FONT><FONT SIZE=4><B> POSIX</B></FONT><FONT SIZE=4><BR>
+</FONT></H5><!--SEC END --><!--TOC section Questões--><HR>
+<H2 CLASS="section"><!--SEC ANCHOR -->Questões</H2><!--SEC END --><OL CLASS="enumerate" type=1><LI CLASS="li-enumerate">Considere o seguinte segmento de código C:<BLOCKQUOTE CLASS="quote">
+<PRE CLASS="verbatim">1: tmp = n;
+2: tmp++;
+3: n = tmp;
+</PRE></BLOCKQUOTE><P>onde <CODE>tmp</CODE> e <CODE>n</CODE> são variáveis inteiras.</P><P>Ilustre através duma sequência das instruções acima
+(<I>interleaving</I>) como a a sua execução concorrente por 2
+<I>threads</I> pode dar origem a uma <I>race
+condition</I>. Assuma que cada uma das instruções em linguagem C é
+atómica.</P></LI><LI CLASS="li-enumerate">Considere a substituição da sequência acima por uma única instrução:
+<BLOCKQUOTE CLASS="quote">
+<PRE CLASS="verbatim">1: n++;
+</PRE></BLOCKQUOTE><OL CLASS="enumerate" type=a><LI CLASS="li-enumerate">
+Há possibilidade de <I>race conditions</I> quando é executada por
+mais do que um <I>thread</I> e a variável <TT>n</TT> é implementada
+em memória? Justifique.
+</LI><LI CLASS="li-enumerate">E se a variável <TT>n</TT> for implementada num registo
+do processador? Há possibilidade de <I>race conditions</I>? Justifique.
+</LI></OL></LI></OL><!--TOC section Problemas-->
+<H2 CLASS="section"><!--SEC ANCHOR -->Problemas</H2><!--SEC END --><!--TOC paragraph Nota-->
+<H3 CLASS="paragraph"><!--SEC ANCHOR -->Nota</H3><!--SEC END --><P> Os seus programas deverão usar a biblioteca <CODE>libpthread</CODE>. Não se esqueça de indicá-lo ao compilador, i.e. especificar <CODE>-lpthread</CODE> na linha de comandos.</P><P>Deverá ainda definir a variável <CODE>_REENTRANT</CODE> na linha de comandos do
+<CODE>gcc</CODE>, usando o argumento <CODE>-D_REENTRANT</CODE>, para garantir que
+o compilador usa as funções apropriadas da biblioteca C.</P><OL CLASS="enumerate" type=1><LI CLASS="li-enumerate"><OL CLASS="enumerate" type=a><LI CLASS="li-enumerate">
+Escreva um programa cujo <I>thread</I> principal cria 3
+novos <I>threads</I>. <P>Cada <I>thread</I> (diferente do principal) deve executar a
+função <A href="tfun.c"><TT>tfun()</TT></A>, a qual incrementa uma variável definida
+em <CODE>main()</CODE> 10 M vezes. A função <CODE>tfun()</CODE> deve ainda
+imprimir indicando o início e o termo da sua actividade.</P><P>O <I>thread</I> principal deve esperar que os outros 3
+<I>threads</I> terminem, e depois deverá imprimir o valor da
+variável de contagem.</P><P>Leia a função <CODE>tfun()</CODE> com cuidado para especificar correctamente o
+último argumento de <CODE>pthread_create()</CODE>.</P><P><B>IMP.</B> Os <I>threads</I> deverão incrementar a mesma variável.</P><P>Compile o seu programa e execute-o várias vezes. Explique os
+resultados observados.</P></LI><LI CLASS="li-enumerate">Escreva uma nova versão deste programa usando <I>mutexes</I>
+para sincronização. Procure maximizar a concorrência entre os
+diferentes <I>threads</I>.<P><B>Dica</B> Escreva uma nova versão da função <CODE>tfun()</CODE> que deverá
+designar por <CODE>sfun()</CODE> (s de sincronizada).</P><P>Compile e teste a nova versão do seu programa. 
+</P></LI></OL></LI><LI CLASS="li-enumerate">O ficheiro <A href="prob2.c"><TT>prob2.c</TT></A> contém parte da solução do
+problema do <I>bounded buffer</I> implementado com um vector circular e
+usando <I>locks(pthread mutexes).</I><P>O <I>thread</I> principal deve criar 3 <I>threads</I> produtores
+e 3 <I>threads</I> consumidores. Além destes, deve criar ainda um
+<I>thread</I> adicional que executa a função <CODE>check()</CODE> para
+verificar se o <I>bounded buffer</I> não é corrompido pelos restantes
+<I>threads</I> devido a <I>race conditions</I>.</P><OL CLASS="enumerate" type=a><LI CLASS="li-enumerate">
+Estude o código fornecido e implemente as funções
+<CODE>prod()</CODE> e <CODE>cons()</CODE>, cujo esqueleto pode encontrar
+naquele ficheiro, executados por <I>threads</I> produtores e
+<I>threads</I> consumidores, respectivamente.<P>Cada <I>thread</I> produtor deve produzir 10 M items: inteiros com o seu
+identificador (entre 0 e 2). Além disso, deve imprimir uma
+mensagem no início e outra no fim da sua execução.</P><P>De modo análogo, cada <I>thread</I> consumidor deve consumir 10
+M items. Além disso deve imprimir uma mensagem no início e outra
+no fim da sua execução. Nesta última deverá imprimir o total,
+discriminado por <I>thread</I> produtor, de items que consumiu.</P><P>Use a função <CODE>yield()</CODE>, também incluída em <CODE>prob2.c</CODE>,
+para evitar <I>busy waiting</I> excessivo. Sempre que um
+<I>thread</I> invocar <CODE>yield()</CODE> deverá imprimir uma mensagem
+indicando-o.</P><P>Teste o seu programa executando-o várias vezes. Anote os seus
+tempos de execução.</P></LI><LI CLASS="li-enumerate">Escreva uma nova versão do programa anterior. Nesta versão, o
+<I>thread</I> principal deverá calcular e imprimir o total,
+discriminado por <I>thread</I> produtor, dos items consumidos
+por todos os <I>threads</I> consumidores.</LI><LI CLASS="li-enumerate">Escreva uma nova versão do programa anterior. Nesta
+versão deverá remover as invocações da função <CODE>yield()</CODE>.<P>Compile e execute a nova versão do seu programa. Nota alguma
+alteração nos tempos de execução? Justifique os valores medidos.</P></LI></OL></LI></OL><!--CUT END -->
+<!--HTMLFOOT-->
+<!--ENDHTML-->
+<!--FOOTER-->
+<HR SIZE=2><BLOCKQUOTE CLASS="quote"><EM>This document was translated from L<sup>A</sup>T<sub>E</sub>X by
+</EM><A HREF="http://hevea.inria.fr/index.html"><EM>H</EM><EM><FONT SIZE=2><sup>E</sup></FONT></EM><EM>V</EM><EM><FONT SIZE=2><sup>E</sup></FONT></EM><EM>A</EM></A><EM>.</EM></BLOCKQUOTE></BODY>
+</HTML>

@@ -1,0 +1,116 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"
+            "http://www.w3.org/TR/REC-html40/loose.dtd">
+<HTML>
+<HEAD>
+<TITLE>SO 2010/2011: Folha 1</TITLE>
+
+<META http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta name="generator" content="Bluefish 1.0.7">
+<STYLE type="text/css">
+.li-itemize{margin:1ex 0ex;}
+.li-enumerate{margin:1ex 0ex;}
+.dd-description{margin:0ex 0ex 1ex 4ex;}
+.dt-description{margin:0ex;}
+.toc{list-style:none;}
+.thefootnotes{text-align:left;margin:0ex;}
+.dt-thefootnotes{margin:0em;}
+.dd-thefootnotes{margin:0em 0em 0em 2em;}
+.footnoterule{margin:1em auto 1em 0px;width:50%;}
+.caption{padding-left:2ex; padding-right:2ex; margin-left:auto; margin-right:auto}
+.title{margin:2ex auto;text-align:center}
+.center{text-align:center;margin-left:auto;margin-right:auto;}
+.flushleft{text-align:left;margin-left:0ex;margin-right:auto;}
+.flushright{text-align:right;margin-left:auto;margin-right:0ex;}
+DIV TABLE{margin-left:inherit;margin-right:inherit;}
+PRE{text-align:left;margin-left:0ex;margin-right:auto;}
+BLOCKQUOTE{margin-left:4ex;margin-right:4ex;text-align:left;}
+TD P{margin:0px;}
+.boxed{border:1px solid black}
+.textboxed{border:1px solid black}
+.vbar{border:none;width:2px;background-color:black;}
+.hbar{border:none;height:2px;width:100%;background-color:black;}
+.hfill{border:none;height:1px;width:200%;background-color:black;}
+.vdisplay{border-collapse:separate;border-spacing:2px;width:auto; empty-cells:show; border:2px solid red;}
+.vdcell{white-space:nowrap;padding:0px;width:auto; border:2px solid green;}
+.display{border-collapse:separate;border-spacing:2px;width:auto; border:none;}
+.dcell{white-space:nowrap;padding:0px;width:auto; border:none;}
+.dcenter{margin:0ex auto;}
+.vdcenter{border:solid #FF8000 2px; margin:0ex auto;}
+.minipage{text-align:left; margin-left:0em; margin-right:auto;}
+.marginpar{border:solid thin black; width:20%; text-align:left;}
+.marginparleft{float:left; margin-left:0ex; margin-right:1ex;}
+.marginparright{float:right; margin-left:1ex; margin-right:0ex;}
+.theorem{text-align:left;margin:1ex auto 1ex 0ex;}
+.part{margin:2ex auto;text-align:center}
+</STYLE>
+</HEAD>
+<BODY >
+<!--HEVEA command line is: /usr/bin/hevea folha1.tex -->
+<!--CUT DEF section 1 --><!--TOC paragraph <FONT SIZE=4><B>Arquitecturas e Sistemas Operativos (2ª Parte)</B></FONT><FONT SIZE=4> 
+</FONT><FONT SIZE=4><B>3º Ano MIEEC</B></FONT><FONT SIZE=4><BR>
+</FONT><FONT SIZE=4><B>Folha nº 1: Programação em C</B></FONT><FONT SIZE=4><BR>
+</FONT>-->
+<H5 CLASS="paragraph"><!--SEC ANCHOR --><FONT SIZE=4><B>Sistemas Operativos</B></FONT><FONT SIZE=4> 
+</FONT><FONT SIZE=4><B>3º Ano MIEEC</B></FONT><FONT SIZE=4><BR>
+</FONT><FONT SIZE=4><B>Folha nº 1: Programação em C</B></FONT><FONT SIZE=4><BR>
+</FONT></H5><!--SEC END --><!--TOC section Objectivos-->
+<hr>
+<H2 CLASS="section"><!--SEC ANCHOR --><A NAME="htoc1">1</A>  Objectivos</H2><!--SEC END --><UL CLASS="itemize"><LI CLASS="li-itemize">
+Relembrar alguns aspectos da programação em C
+</LI><LI CLASS="li-itemize">Praticar programação em C
+</LI><LI CLASS="li-itemize">Familiarizar-se com a execução do compilador de C: <TT>gcc</TT>
+</LI></UL><!--TOC section Problemas-->
+<H2 CLASS="section"><!--SEC ANCHOR --><A NAME="htoc2">2</A>  Problemas</H2><!--SEC END -->
+<OL CLASS="enumerate" type=1>
+<LI CLASS="li-enumerate"> Escreva o programa <TT>fibonacci</TT> que calcula e apresenta na consola os primeiros 10 números da série de Fibonacci. <P><B>Dica:</B> A série de Fibonnacci é uma série cujos 2 primeiros números têm valor 0 e 1, respectivamente, e os restantes são a soma dos 2 números que os precedem na série.</P></LI>
+<LI CLASS="li-enumerate"> O programa em <TT>input.c</TT>, apresentado na aula teórica, usa a função <TT>scanf()</TT> da biblioteca de C para ler um inteiro.
+<OL CLASS="enumerate" type=a>
+<LI CLASS="li-enumerate">
+ Execute-o mas, em vez de digitar um nº inteiro como pedido, digite p.ex.  uma palavra. Qual o resultado?</LI>
+ <LI CLASS="li-enumerate"> Altere o programa para i) validar o valor entrado e ii) ou apresentar esse valor ou então apresentar uma mensagem de erro.<P><B>Dica:</B> Leia o manual da função <TT>scanf()</TT>: <TT>man 3 scanf</TT>.
+</P></LI>
+</OL>
+</LI>
+<LI CLASS="li-enumerate"> Neste exercício pretende-se que use o operador <TT>sizeof</TT> da linguagem C para determinar o tamanho ocupado em memória por variáveis ou constantes de diferentes tipos.
+<OL CLASS="enumerate" type=a>
+<LI CLASS="li-enumerate">
+ Escreva um programa que determina o tamanho de variáveis com os seguintes tipos básicos: <TT>char</TT>, <TT>short int</TT>, <TT>int</TT>, <TT>long int</TT>, <TT>float</TT>, <TT>double</TT>, <TT>void *</TT>.</LI>
+<LI CLASS="li-enumerate"> Escreva uma nova versão do mesmo programa que apresente o tamanho das variáveis declaradas no segmento de código seguinte:
+<PRE CLASS="verbatim">int a[10];
+struct complex {
+    double re, im;
+} z;
+char *hello = "Hello, World!";
+</PRE>Procure explicar os valores apresentados.</LI>
+<LI CLASS="li-enumerate"> Assumindo as declarações da alínea anterior, quais deverão ser os valores retornados por:
+<PRE CLASS="verbatim">sizeof(a[10])
+sizeof(*hello)
+</PRE>Verifique se a sua resposta está correcta. Procure explicar os valores que obteve executando o seu programa.</LI>
+</OL>
+</LI>
+<LI CLASS="li-enumerate"> Neste exercício pretende-se ilustrar o uso de apontadores para transferir dados duma função para a função que a invoca. 
+<OL CLASS="enumerate" type=a>
+<LI CLASS="li-enumerate"> 
+Escreva a função:
+<PRE CLASS="verbatim">void in_fibonacci(int *fib, int n) 
+</PRE> a qual preenche a região de memória que lhe é passada no primeiro argumento com os <TT>n</TT> primeiros elementos da série de Fibonacci.
+</LI> 
+<LI CLASS="li-enumerate">Escreva a função <code>main()</code> a qual deverá invocar a função  <code>in_fibonacci()</code> e após os seu retorno imprimir na consola os valores preenchidos por <code>in_fibonacci()</code>.
+<P><B>IMP.-</B> A região de memória passada a <TT>in_fibonacci()</TT> deverá ter o espaço necessário para armazenar <TT>n</TT> inteiros. Duas possibilidades são: 1) usar alocação estática declarando um vector com pelo menos <TT>n</TT> inteiros; 2) usar alocação dinâmica de memória, i.e. usar a função <TT>malloc()</TT>.</P>
+</LI>
+</ol>
+</LI>
+<LI CLASS="li-enumerate"> Inteiros que ocupam mais do que um <I>byte</I> podem ser armazenados de 2 formas na memória: 1) o <I>byte</I> mais significativo (MSB) pode ser armazenado primeiro, i.e. na posição de memória com endereço mais baixo, e depois os restantes por ordem sendo o <I>byte</I> menos significativo (LSB) armazenado na posição de memória com um maior endereço; 2) inversamente, o LSB é armazenado na posição de memória com menor endereço e o MSB na posição de memória com maior endereço. A primeira forma é designada por <I>big endian</I> enquanto a segunda por <I>little endian</I>.
+<P>A <I>endianness</I> é uma característica da arquitectura do processador. (Embora alguns processadores suportem as duas formas.) </P>
+<P>Escreva o programa <TT>endian</TT> que lhe permita determinar a <I>endianness</I> da arquitectura IA32, <B>usando apontadores para carácteres</B> para aceder ao valor de cada um dos seus bytes separadamente.</P>
+<P><B>Dica-</B> Para imprimir o valor dum <I>byte</I> (carácter) em hexadecimal pode usar <TT>printf()</TT> com a <I>string</I> de formatação <TT>%#x</TT>.</P>
+</LI>
+<LI CLASS="li-enumerate"> Escreva uma nova versão do programa anterior de forma a que em vez de imprimir o conteúdo de cada byte do inteiro em hexadecimal o imprima em binário.<P><B>Dica-</B> Escreva uma função que imprime na consola os bits que compõem um carácter.
+</P></LI>
+</OL><!--CUT END -->
+<!--HTMLFOOT-->
+<!--ENDHTML-->
+<!--FOOTER-->
+<HR SIZE=2><BLOCKQUOTE CLASS="quote"><EM>This document was translated from L<sup>A</sup>T<sub>E</sub>X by
+</EM><A HREF="http://hevea.inria.fr/index.html"><EM>H</EM><EM><FONT SIZE=2><sup>E</sup></FONT></EM><EM>V</EM><EM><FONT SIZE=2><sup>E</sup></FONT></EM><EM>A</EM></A><EM>.</EM></BLOCKQUOTE></BODY>
+</HTML>

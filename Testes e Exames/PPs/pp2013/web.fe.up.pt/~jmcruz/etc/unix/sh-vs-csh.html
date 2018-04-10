@@ -1,0 +1,199 @@
+<html>
+<head>
+  <meta http-equiv="content-type" content="">
+  <title></title>
+</head>
+
+<body>
+<p class="wwwjmcruz" style="text-align: right"><a
+href="http://web.fe.up.pt/~jmcruz/">J. Magalhães Cruz</a></p>
+
+<h1>Some differences between BASH e TCSH</h1>
+
+<h2>(or: Why I prefer BASH!)</h2>
+
+<table border="1" style="background-color: #DCEBEF">
+  <caption>Bash vs Tcsh: Table of Differences</caption>
+  <thead>
+    <tr>
+      <th></th>
+      <th style="background-color: #9ACDDB">BASH</th>
+      <th style="background-color: #9ACDDB">TCSH</th>
+      <th style="background-color: #9ACDDB">Output generation</th>
+      <th style="background-color: #9ACDDB">BASH<br>
+        output</th>
+      <th style="background-color: #9ACDDB">TCSH<br>
+        output</th>
+      <th style="background-color: #9ACDDB">Comments</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td rowspan="2" valign="middle"
+        style="background-color: #9ACDDB"><strong>Shell
+      variables</strong></td>
+      <td><code>x=3</code></td>
+      <td style="background-color: #00FF00"><code>set x = 3</code></td>
+      <td><code>echo $x</code></td>
+      <td><code>3</code></td>
+      <td><code>3</code></td>
+      <td>spaces are not important in Tcsh!</td>
+    </tr>
+    <tr>
+      <td><code>y=$x:4</code></td>
+      <td><code>set y=($x 4)</code></td>
+      <td><code>echo $y</code></td>
+      <td><code>3:4</code></td>
+      <td><code>3 4</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td rowspan="2" valign="middle"
+        style="background-color: #9ACDDB"><strong>Environment
+        variables</strong><br>
+        (<em>children inherit them</em>)</td>
+      <td><code>export z=5</code></td>
+      <td style="background-color: #FF0000"><code>setenv z 5</code></td>
+      <td><code>echo $z</code></td>
+      <td><code>5</code></td>
+      <td><code>5</code></td>
+      <td>why not '<code>setenv z = 5</code>' in Tcsh?!</td>
+    </tr>
+    <tr>
+      <td><code>export q=$z:6</code></td>
+      <td style="background-color: #FF0000"><code>setenv q "$z 6"</code></td>
+      <td><code>echo $q</code></td>
+      <td><code>5:6</code></td>
+      <td><code>5 6</code></td>
+      <td>why not '<code>setenv q ($z 5)</code>' in Tcsh?!</td>
+    </tr>
+    <tr>
+      <td valign="middle" style="background-color: #9ACDDB"><strong>Shell
+        &amp; environment<br>
+        variables</strong></td>
+      <td><code>z=7</code></td>
+      <td><code>set z = 7</code></td>
+      <td><code>echo $z;<br>
+        env|grep z</code></td>
+      <td><code>7<br>
+        z=7</code></td>
+      <td style="background-color: #FF0000"><code>7<br>
+        z=5</code></td>
+      <td>different shell and environment variables can have same name in
+        Tcsh!</td>
+    </tr>
+    <tr>
+      <td valign="middle" style="background-color: #9ACDDB"><strong>PATH
+        &amp; path<br>
+        variables</strong></td>
+      <td><code>export PATH=/a:/b</code></td>
+      <td><code>set path=(/a /b)</code></td>
+      <td><code>echo $path;<br>
+        echo $PATH;<br>
+        env|grep path</code></td>
+      <td><code>-<br>
+        /a:/b<br>
+        -</code></td>
+      <td style="background-color: #FF0000"><code>/a /b<br>
+        /a:/b<br>
+        -</code></td>
+      <td>why is there a '<code>path</code>' shell variable in TCSH?</td>
+    </tr>
+    <tr>
+      <td valign="middle"
+        style="background-color: #9ACDDB"><strong>Aliases</strong></td>
+      <td><code>alias ls="ls -l"</code></td>
+      <td><code>alias ls "ls -l"</code></td>
+      <td><code>ls</code></td>
+      <td>(<em>same as ls -l</em>)</td>
+      <td>(<em>same as ls -l</em>)</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td valign="middle" style="background-color: #9ACDDB"><strong>Command
+        prompt</strong></td>
+      <td><code>PS1=abc-</code></td>
+      <td><code>set prompt=abc-</code></td>
+      <td>[<em>ENTER</em>]</td>
+      <td><code>abc-</code></td>
+      <td><code>abc-</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td valign="middle"
+        style="background-color: #9ACDDB"><strong>Redirection</strong></td>
+      <td style="background-color: #00FF00"><code>prog &gt; ofile 2&gt;
+        efile</code></td>
+      <td><code>(prog &gt; ofile) &gt;&amp; efile</code></td>
+      <td>[<em>ENTER</em>]</td>
+      <td>(<em>stdout data in ofile; stderr data in efile</em>)</td>
+      <td>(<em>stdout data in ofile; stderr data in efile</em>)</td>
+      <td>file descriptors can be used with Bash!</td>
+    </tr>
+    <tr>
+      <td valign="middle" style="background-color: #9ACDDB"><strong>Login
+        shell startup files</strong><br>
+        (<em>order of shell parsing</em>)</td>
+      <td><code>/etc/profile<br>
+        ~/.bash_profile<br>
+        ~/.bash_login<br>
+        ~/.profile</code></td>
+      <td><code>/etc/csh.cshrc<br>
+        /etc/csh.login<br>
+        ~/.tcshrc<br>
+        ~/.cshrc<br>
+        ~/.login</code></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td valign="middle" style="background-color: #9ACDDB"><strong>Non-login
+        shell startup files</strong><br>
+        <strong></strong>(<em>order of shell parsing</em>)</td>
+      <td><code>~/.bashrc</code></td>
+      <td><code>/etc/csh.cshrc<br>
+        ~/.tcshrc<br>
+        ~/.cshrc</code></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td valign="middle" style="background-color: #9ACDDB"><strong>Logout
+        cleanup files</strong></td>
+      <td><code>~/.bash_logout</code></td>
+      <td><code>/etc/csh.logout<br>
+        ~/.logout</code></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td valign="middle"
+        style="background-color: #9ACDDB"><strong>Scripting</strong></td>
+      <td style="background-color: #00FF00"></td>
+      <td style="background-color: #FF0000"></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>(Ba)sh scripts are everywhere and are considered better!</td>
+    </tr>
+  </tbody>
+</table>
+
+<p></p>
+
+<h3>Referências:</h3>
+<ul>
+  <li><a
+    href="http://www.faqs.org/faqs/unix-faq/shell/csh-whynot/">http://www.faqs.org/faqs/unix-faq/shell/csh-whynot/</a></li>
+  <li><a
+    href="http://www.gnu.org/software/bash/">http://www.gnu.org/software/bash/</a></li>
+  <li><a href="http://www.tcsh.org/">http://www.tcsh.org/</a></li>
+</ul>
+</body>
+</html>

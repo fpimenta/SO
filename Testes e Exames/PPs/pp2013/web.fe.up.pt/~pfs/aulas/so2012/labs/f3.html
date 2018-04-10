@@ -1,0 +1,171 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"
+            "http://www.w3.org/TR/REC-html40/loose.dtd">
+<HTML>
+<HEAD>
+<TITLE>SO (MIEEC): f3</TITLE>
+
+<META http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta name="generator" content="Bluefish 2.0.2" >
+<STYLE type="text/css">
+.li-itemize{margin:1ex 0ex;}
+.li-enumerate{margin:1ex 0ex;}
+.dd-description{margin:0ex 0ex 1ex 4ex;}
+.dt-description{margin:0ex;}
+.toc{list-style:none;}
+.thefootnotes{text-align:left;margin:0ex;}
+.dt-thefootnotes{margin:0em;}
+.dd-thefootnotes{margin:0em 0em 0em 2em;}
+.footnoterule{margin:1em auto 1em 0px;width:50%;}
+.caption{padding-left:2ex; padding-right:2ex; margin-left:auto; margin-right:auto}
+.title{margin:2ex auto;text-align:center}
+.center{text-align:center;margin-left:auto;margin-right:auto;}
+.flushleft{text-align:left;margin-left:0ex;margin-right:auto;}
+.flushright{text-align:right;margin-left:auto;margin-right:0ex;}
+DIV TABLE{margin-left:inherit;margin-right:inherit;}
+PRE{text-align:left;margin-left:0ex;margin-right:auto;}
+BLOCKQUOTE{margin-left:4ex;margin-right:4ex;text-align:left;}
+TD P{margin:0px;}
+.boxed{border:1px solid black}
+.textboxed{border:1px solid black}
+.vbar{border:none;width:2px;background-color:black;}
+.hbar{border:none;height:2px;width:100%;background-color:black;}
+.hfill{border:none;height:1px;width:200%;background-color:black;}
+.vdisplay{border-collapse:separate;border-spacing:2px;width:auto; empty-cells:show; border:2px solid red;}
+.vdcell{white-space:nowrap;padding:0px;width:auto; border:2px solid green;}
+.display{border-collapse:separate;border-spacing:2px;width:auto; border:none;}
+.dcell{white-space:nowrap;padding:0px;width:auto; border:none;}
+.dcenter{margin:0ex auto;}
+.vdcenter{border:solid #FF8000 2px; margin:0ex auto;}
+.minipage{text-align:left; margin-left:0em; margin-right:auto;}
+.marginpar{border:solid thin black; width:20%; text-align:left;}
+.marginparleft{float:left; margin-left:0ex; margin-right:1ex;}
+.marginparright{float:right; margin-left:1ex; margin-right:0ex;}
+.theorem{text-align:left;margin:1ex auto 1ex 0ex;}
+.part{margin:2ex auto;text-align:center}
+</STYLE>
+</HEAD>
+<BODY >
+<!--HEVEA command line is: /usr/bin/hevea f3 -->
+<!--CUT DEF section 1 --><!--TOC paragraph <FONT SIZE=4><B>Arquitecturas e Sistemas Operativos (2ª Parte)</B></FONT><FONT SIZE=4> 
+</FONT><FONT SIZE=4><B>3º Ano MIEEC</B></FONT><FONT SIZE=4><BR>
+</FONT><FONT SIZE=4><B>Folha nº 3: Processos e sua API em Unix/Linux</B></FONT><FONT SIZE=4><BR>
+</FONT>-->
+<H5 CLASS="paragraph"><!--SEC ANCHOR --><FONT SIZE=4><B>Sistemas Operativos</B></FONT><FONT SIZE=4> 
+</FONT><FONT SIZE=4><B>3º Ano MIEEC</B></FONT><FONT SIZE=4><BR>
+</FONT><FONT SIZE=4><B>Folha nº 3: Processos e sua API em Unix/Linux</B></FONT><FONT SIZE=4><BR>
+</FONT></H5><HR><!--SEC END --><!--TOC section Questões-->
+<H2 CLASS="section"><!--SEC ANCHOR -->
+<A NAME="htoc1">1</A>  Questões</H2><!--SEC END -->
+<OL CLASS="enumerate" type=1>
+    <LI CLASS="li-enumerate"> Sobre processos em Unix/Linux.
+        <OL CLASS="enumerate" type=a>
+        <LI CLASS="li-enumerate"> O que é um processo?</LI>
+        <LI CLASS="li-enumerate">Quantos processos são executados quando dá o comando <TT>man pstree</TT>?</LI>
+        <LI CLASS="li-enumerate">Usando <TT>pstree</TT> veja os processos que estão a ser executados em <B>seu nome</B>? <B>Dica:</B> Leia a <I>man page</I> de <TT>pstree</TT>.</LI>
+        <LI CLASS="li-enumerate">Por que razão os processos executam em nome dum utilizador?</LI>
+        </OL>
+    </LI>
+    <LI CLASS="li-enumerate">Sobre a API para criação/sincronização de processos em Unix/Linux
+        <OL CLASS="enumerate" type=a>
+        <LI CLASS="li-enumerate">Para que serve a chamada ao sistema <TT>fork</TT>? Como se pode distinguir entre o processo pai e o processo filho? </LI>
+        <LI CLASS="li-enumerate">Para que serve a chamada ao sistema <TT>execve</TT>?</LI>
+        <LI CLASS="li-enumerate">Quantos valores um processo pai pode receber do seu filho quando este termina através das chamadas ao sistema <TT>wait/waitpid</TT>?</LI>
+        </OL>
+    </LI>
+    <LI CLASS="li-enumerate"> Sobre sinais em Unix/Linux.
+        <OL CLASS="enumerate" type=a>
+        <LI CLASS="li-enumerate"> Indique os 3 "usos" de sinais em Unix/Linux e para cada um deles indique um sinal POSIX que ilustre esse uso.</LI>
+        <LI CLASS="li-enumerate">Para cada sinal, a norma POSIX especifica uma ação (<i>disposition</i>) por omissão, a qual pode ser uma de 5 possíveis. Enumere-as e para cada uma delas dê um exemplo dum sinal POSIX com essa ação por omissão. <b>Dica:</b> Faça <i>man 7 signal</i>. </LI>
+        <LI CLASS="li-enumerate">Qual é a chamada ao sistema que permite a um processo alterar a ação associada a um dado sinal?</LI>
+        <LI CLASS="li-enumerate">Para que serve a chamada ao sistema <tt>kill()</tt>? Por que razão Unix/Linux restringe os processos que um dado processo pode especificar como primeiro argumento desta chamada ao sistema?</LI>
+        <LI CLASS="li-enumerate">O que é uma <i>async-signal-safe</i> function? Considera o conhecimento destas funções importante para o desenvolvimento dos <i>handlers</i> de sinais? <b>Dica:</b> Faça <i>man 7 signal</i>. </LI>
+        </OL>
+    </LI>
+</OL>
+<!--TOC section Problemas-->
+<H2 CLASS="section"><!--SEC ANCHOR --><A NAME="htoc2">2</A>  Problemas</H2>
+<!--SEC END -->
+<OL CLASS="enumerate" type=1>
+    <LI CLASS="li-enumerate">Escreva um programa que imprime na sua <I>saída standard</I> os argumentos com que é invocado bem como o valor da sua variável de ambiente <TT>SHELL</TT>.
+    <DL CLASS="description">
+        <DT CLASS="dt-description"><B>Dicas:</B></DT>
+        <DD CLASS="dd-description">
+            <UL CLASS="itemize">
+            <LI CLASS="li-itemize"> Desenvolva o programa gradualmente. Inicialmente, desenvolva uma versão que imprime todas as variáveis de ambiente e os respectivos valores. Pode usar um formato semelhante ao usado pelo comando <TT>printenv</TT>.
+</LI>
+            <LI CLASS="li-itemize">Para comparar <I>strings</I> use funções da biblioteca C (<CODE>man 3 string</CODE>)
+</LI>
+            </UL>
+        </DD>
+        <DT CLASS="dt-description"><B>Informação:</B></DT>
+        <DD CLASS="dd-description"> Pode alterar as variáveis de ambiente dando os seguintes comandos, conforme a <I>shell</I> que usa:
+            <DL CLASS="description">
+            <DT CLASS="dt-description"><B>bash</B></DT>
+            <DD CLASS="dd-description"> <CODE>&lt;nome_variável&gt;=&lt;valor_variável&gt;; export &lt;nome_variável&gt;</CODE> </DD>
+            <DT CLASS="dt-description"><B>(t)csh</B></DT>
+            <DD CLASS="dd-description"> <CODE>setenv &lt;nome_variável&gt; &lt;valor_variável&gt;</CODE> </DD>
+            </DL>
+            Para mais informação sobre estas <i>shells</i> pode consultar uma <a href="../../../../~jmcruz/etc/unix/sh-vs-csh.html"> comparação sumária entre a <i>bash</i> e a <i>tcsh</i> compilada pelo Prof. José Manuel Cruz.</a>
+        </DD>
+
+        </DL>
+    </LI>
+    <LI CLASS="li-enumerate">Escreva um programa que:
+        <OL CLASS="enumerate" type=a>
+        <LI CLASS="li-enumerate"> Lista as suas variáveis de ambiente e os respectivos valores num ficheiro, cujo nome lhe é passado como argumento; </LI>
+        <LI CLASS="li-enumerate">Cria um processo filho, que lista as suas variáveis de ambiente e os respectivos valores noutro ficheiro, cujo nome é passado como argumento quer ao processo pai quer ao processo filho. </LI>
+        </OL>
+        <P>Compare os ficheiros criados pelos 2 processos. Que conclusões pode tirar em relação às variáveis de ambiente dum processo e do seu filho?</P>
+    </LI>
+    <LI CLASS="li-enumerate">Escreva um programa que cria um <B>filho</B> e um <B>neto</B>. Cada um dos processos deve escrever o seu <TT>pid</TT> e o do seu pai, além do código de terminação do seu filho (se existir). O filho e o neto devem terminar com o código 2 e 3, respectivamente.<!--TOC paragraph Dica-->
+        <H5 CLASS="paragraph"><!--SEC ANCHOR -->Dica</H5><!--SEC END -->
+        <P> Desenvolva o programa gradualmente. P.ex.:</P>
+        <OL CLASS="enumerate" type=a>
+        <LI CLASS="li-enumerate"> Desenvolva uma versão na qual o processo único deverá imprimir o seu <TT>pid</TT> e o
+do seu pai.</LI>
+        <LI CLASS="li-enumerate">Desenvolva uma versão na qual o processo "inicial" cria um processo filho. O processo pai deverá imprimir o <TT>pid</TT> do seu filho e terminar. O processo filho deverá imprimir o seu <TT>pid</TT> e o do seu pai. 
+</LI>
+        <LI CLASS="li-enumerate">Desenvolva uma nova versão com as seguintes diferenças: (i) O processo pai deverá aguardar pela terminação do processo filho e imprimir o código de terminação deste último. (ii) O processo filho deverá terminar com o código 2. </LI>
+        </OL>
+    </LI>
+    <LI CLASS="li-enumerate">Escreva um programa que cria um processo que <B>compila</B> um programa em C, cujo nome lhe é passado como argumento da linha de comandos. O seu programa deverá executar o utilitário <TT>gcc (/usr/bin/gcc)</TT>, invocando a chamada ao sistema <TT>execve()</TT>, com os argumentos apropriados. O processo pai deverá esperar que o processo filho termine.</LI>
+    <LI CLASS="li-enumerate">Crie uma versão do programa anterior, tal que o programa execute ele próprio o <TT>gcc</TT>, i.e.
+que não crie um processo filho para realizar essa tarefa. </LI>
+    <LI CLASS="li-enumerate">Escreva um programa para demonstrar o processamento de sinais POSIX.
+        <OL CLASS="enumerate" type=a>
+        <LI CLASS="li-enumerate"> Numa primeira versão, o seu programa deverá apenas solicitar ao utilizador que introduza dados através da entrada <i>standard</i>, e tentar lê-la usando a chamada ao sistema <tt>read()</tt>. <BR> <B>Dica</B>: Para testar o seu programa, execute-o e, em vez de introduzir "texto" através do teclado, envie-lhe um sinal <tt>SIGINT</tt>, premindo <tt>CTRL-C</tt>. Procure explicar o que observa.</LI>
+        <LI CLASS="li-enumerate">Crie uma nova versão do seu programa que deverá instalar um <i>handler</i> que "processe" sinais do tipo <tt>SIGINT</tt>. Este <i>handler</i> pode ser apenas uma função sem qualquer instrução. Para melhor ilustrar o funcionamento de sinais, o seu programa deverá invocar a função <tt>printf()</tt> para indicar o processamento que realiza.  Deverá ainda fazer um processamento cuidadoso do valor retornado por <tt>read()</tt>. <BR> 
+<b>IMP.</b> O seu <i>handler</i> não deverá invocar a função <tt>printf()</tt> pois esta pode não ser <i>async-signal-safe</i> (para mais informação tente <tt>man 7 signal</tt>). <BR>
+Para testar o processamento de sinais: (i) execute o seu programa e proceda como na alínea anterior, i.e. prima <tt>CTRL-C</tt> sem premir previamente outras teclas; (ii) execute o seu programa e prima algumas teclas, mas não a tecla <tt>ENTER</tt>, e depois prima <tt>CTRL-C</tt>. </LI>
+        </OL>
+        <P>Que conclusões tira sobre o processamento de sinais e sobre o efeito da sua ocorrência na execução duma chamada
+            ao sistema como <tt>read()</tt> que bloqueia à espera de eventos gerados por periféricos. Leia a man page de
+            <tt>read</tt> para validar as suas conclusões.</P>
+    </LI>
+    <LI CLASS="li-enumerate">Neste problema deverá escrever um programa para ilustrar o processamento de sinais POSIX gerados pelo próprio SO, nomeadamente o sinal <tt>SIGCHLD</tt> que é gerado quando um processo filho termina (ou é suspenso).
+    <OL CLASS="enumerate" type=a>
+        <LI CLASS="li-enumerate"> Numa primeira versão, o processo pai deverá instalar um <i>handler</i> para aquele sinal, criar um processo filho e executar <tt>sigsuspend()</tt>, aguardando que o processo filho termine. <BR>
+        O processo filho deverá invocar a função <tt>sleep()</tt> (tente <tt>man 3 sleep</tt>) com argumento 1 ou 2, e depois terminar. <BR>
+        Tanto o processo pai como o seu filho deverão invocar a função <tt>printf()</tt> com argumentos apropriados para que se possa seguir os passos que executam. </LI>
+        <LI CLASS="li-enumerate"> Altere o programa desenvolvido na alínea anterior de modo a que o processo filho termine imediatamente, i.e. sem executar <tt>sleep()</tt>, e o processo pai invoque <tt>sleep()</tt> antes de invocar <tt>sigsuspend</tt>  </LI>
+    </OL>   
+    <P>Procure explicar os resultados obtidos executando as 2 versões do seu programa.</P>
+    </LI>
+        <LI CLASS="li-enumerate">Este problema pretende ilustrar o envio dum sinal por um processo a outro. 
+    <OL CLASS="enumerate" type=a>
+        <LI CLASS="li-enumerate"> Numa primeira versão o processo pai deverá criar o processo filho, invocar <tt>sleep()</tt> com argumento 1 ou 2, e em seguida enviar o sinal <tt>SIGUSR1</tt> ao processo filho, invocando a chamada ao sistema <tt>kill()</tt>. Em seguida, deverá esperar pela terminação do processo filho, via <tt>wait()</tt>.<BR>
+        O processo filho deverá invocar <tt>sigsuspend()</tt>. Quando retornar desta chamada ao sistema deverá invocar <tt>exit()</tt> com o valor de <tt>errno</tt> após retorno de <tt>sigsuspend()</tt>.<BR> 
+        Tanto o processo pai como o seu filho deverão invocar a função <tt>printf()</tt> com argumentos apropriados para que se possa seguir os passos que executam. Em particular, o processo pai deverá fornecer informação detalhada sobre o valor recebido através do argumento de <tt>exit()</tt> (veja a <i>man page</i> de <tt>wait()</tt> e o exemplo nela incluido).
+        </LI>  
+        <LI CLASS="li-enumerate"> Altere o programa desenvolvido na alínea anterior de modo a que o processo pai instala um <i>handler</i> para processar sinais <tt>SIGUSR1</tt> antes de criar o processo filho.</LI>
+    </OL>   
+    <P>Procure explicar os resultados obtidos executando as 2 versões do seu programa.</P>
+    </LI>
+</OL>
+<!--CUT END -->
+<!--HTMLFOOT-->
+<!--ENDHTML-->
+<!--FOOTER-->
+<HR SIZE=2><BLOCKQUOTE CLASS="quote"><EM>This document was translated from L<sup>A</sup>T<sub>E</sub>X by
+</EM><A HREF="http://hevea.inria.fr/index.html"><EM>H</EM><EM><FONT SIZE=2><sup>E</sup></FONT></EM><EM>V</EM><EM><FONT SIZE=2><sup>E</sup></FONT></EM><EM>A</EM></A><EM>.</EM></BLOCKQUOTE></BODY>
+</HTML>

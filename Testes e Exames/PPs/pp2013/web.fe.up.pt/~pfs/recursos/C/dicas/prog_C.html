@@ -1,0 +1,630 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<!--Converted with LaTeX2HTML 98.2 beta6 (August 14th, 1998)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>PROG-C</TITLE>
+<META NAME="description" CONTENT="PROG-C">
+<META NAME="keywords" CONTENT="prog_C">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<LINK REL="STYLESHEET" HREF="prog_C.css">
+</HEAD>
+<BODY bgcolor=#ffffff>
+<P>
+
+<P>
+
+<H1>Notas sobre programa&#231;&#227;o com linguagem C</H1>
+
+<HR>
+
+<H1><A NAME="SECTION00010000000000000000">
+Introdu&#231;&#227;o</A>
+</H1>
+
+<P>
+Nas aulas pr&#225;ticas apercebi-me que voc&#234;s cometem erros
+de sintaxe na programa&#231;&#227;o com a linguagem C de
+``bradar aos c&#233;us''. 
+
+<P>
+Julgo que este problema resulta duma compreens&#227;o deficiente
+de alguns conceitos associados a linguagens de programa&#231;&#227;o,
+obtida, talvez, da leitura de apontamentos resumidos que foram
+criados para suporte de aulas te&#243;ricas. Para corrigir estes 
+problemas, sugiro que leiam com cuidado um livro como <I>The C 
+Programming Language</I> de Kernighan e Ritchie, o qual faz
+uma apresenta&#231;&#227;o sint&#233;tica mas completa dos conceitos
+envolvidos.
+
+<P>
+Correndo o risco de mais uma vez apresentar conceitos duma
+forma resumida, este documento procura esclarecer alguns
+aspectos que me parecem fundamentais, mas dos quais muitos 
+de voc&#234;s t&#234;m ideias nebulosas.
+
+<P>
+
+<H1><A NAME="SECTION00020000000000000000">
+Tipos</A>
+</H1>
+
+<P>
+Em C, cada vari&#225;vel tem um <B>tipo</B>, o qual deve ser
+indicado quando a vari&#225;vel &#233; declarada ou definida. Por
+exemplo: 
+<PRE>
+int main() {
+   int n;
+</PRE>
+define a vari&#225;vel de nome <TT>n</TT> como sendo do tipo
+<TT>int</TT>, i.e. inteiro.
+
+<P>
+O tipo duma vari&#225;vel especifica:
+<DL COMPACT>
+<DT>1.
+<DD>os valores que essa vari&#225;vel pode ter;
+<DT>2.
+<DD>as opera&#231;&#245;es que lhe podem ser aplicadas;
+</DL>
+
+<P>
+Por exemplo:
+<PRE>
+   n = 3.14;
+</PRE>
+n&#227;o &#233; uma instru&#231;&#227;o correcta porque atribui um valor
+real a uma vari&#225;vel do tipo inteiro. (Embora seja poss&#237;vel
+que o compilador gere c&#243;digo que trunque a parte decimal do
+valor real, e n&#227;o indique qualquer erro.)
+
+<P>
+De igual modo, em
+<PRE>
+   float x, pi = 3.14;
+   x = pi % 3;
+</PRE>
+a instru&#231;&#227;o <code>x = pi % 3;</code> n&#227;o &#233; v&#225;lida porque
+a opera&#231;&#227;o <code>%</code> (m&#243;dulo, ou resto da divis&#227;o inteira)
+requer que ambos os operandos sejam inteiros.
+
+<P>
+Tal como as vari&#225;veis, as constantes tamb&#233;m t&#234;m tipos. Por
+exemplo, <code>3</code> &#233; uma constante do tipo inteiro, enquanto que
+<code>3.0</code> &#233; uma constante do tipo real e n&#227;o pode ser usada
+como operando da opera&#231;&#227;o <code>%</code>.
+
+<P>
+Mais, qualquer express&#227;o da linguagem C tem um tipo. O tipo
+duma express&#227;o depende do tipo dos seus operandos e das
+opera&#231;&#245;es envolvidas na express&#227;o. Por exemplo, se 
+<code>n</code> f&#244;r do tipo inteiro, a express&#227;o:
+<PRE>
+   n/2
+</PRE>
+&#233; do tipo inteiro.
+No entanto, a express&#227;o:
+<PRE>
+   n/2.0
+</PRE>
+&#233; do tipo real, mesmo assumindo que <code>n</code> &#233; do tipo inteiro.
+
+<P>
+Uma regra <B>fundamental</B> &#233;:
+<BLOCKQUOTE>
+<B>numa instru&#231;&#227;o de atribui&#231;&#227;o os tipos das
+express&#245;es dos dois 
+t&#234;m de ser id&#234;nticos, ou pelo menos ter&#225; ser poss&#237;vel
+converter o tipo do lado direito no tipo do lado esquerdo</B>
+
+</BLOCKQUOTE>
+
+<P>
+Esta regra &#233; an&#225;loga &#224; regra da f&#237;sica:
+<BLOCKQUOTE>
+Numa equa&#231;&#227;o, as unidades do lado esquerdo t&#234;m ser 
+id&#234;nticas &#224;s unidades do lado direito.
+
+</BLOCKQUOTE>
+
+<P>
+Violar esta regra dos tipos &#233; um erro inaceit&#225;vel e que
+permite classificar a pessoa como um ``programador do fundo da
+escala''.
+
+<P>
+Um erro semelhante &#224; viola&#231;&#227;o desta regra diz respeito 
+&#224; invoca&#231;&#227;o duma fun&#231;&#227;o com argumentos cujos
+tipos n&#227;o s&#227;o os (ou n&#227;o s&#227;o convert&#237;veis nos)
+especificados na defini&#231;&#227;o da fun&#231;&#227;o.
+
+<P>
+
+<H1><A NAME="SECTION00030000000000000000">
+Apontadores, endere&#231;os e vectores</A>
+</H1>
+
+<P>
+A maioria dos erros devido &#224; incompatibilidade dos tipos das
+express&#245;es usadas surgem no contexto de <I>apontadores</I>.
+
+<P>
+Um apontador &#233; uma vari&#225;vel cujo valor &#233; um endere&#231;o
+duma vari&#225;vel de um determinado tipo. Por exemplo:
+<PRE>
+   int *p;
+</PRE>
+define a vari&#225;vel <code>p</code> como sendo do tipo <TT>endere&#231;o
+de inteiro</TT>, ou seja um apontador para inteiro.
+
+<P>
+Apontadores podem ser inicializados usando o operador <code>&amp;</code>.
+Por exemplo:
+<PRE>
+   int n;
+   int *p = &amp;n;
+</PRE>
+inicializa <code>p</code> com o endere&#231;o da vari&#225;vel <code>n</code>,
+como ilustra a figura seguinte:
+<P>
+<DIV ALIGN="CENTER">
+<IMG ALIGN="TOP" BORDER="0" ALT="next"
+ SRC="pointerNHalf.xfig.jpg"> 
+</DIV>
+<P>
+Por exemplo, o c&#243;digo seguinte:
+<PRE>
+   int n = 2;
+   int *p = &amp;n;
+   printf(``n = %d\t *p = %d\t p = %p \t &amp;n = %p\n'', 
+          n, *p, p, &amp;n);
+</PRE>
+imprimir&#225; qualquer coisa como:
+<PRE>
+n = 2   *p = 2  p = 0xbffffc84  &amp;n = 0xbffffc84
+</PRE>
+Isto &#233;, o endere&#231;o da vari&#225;vel <code>n</code> &#233; o valor
+da vari&#225;vel <code>p</code> e vale <code>0xbffffc84</code> (um endere&#231;o 
+de 32 bits).
+
+<P>
+Para interpretar express&#245;es usando apontadores ou endere&#231;os,
+pode ajud&#225;-lo ser as seguintes express&#245;es como indicado:
+<DL>
+<DT><STRONG><TT>&amp;n</TT></STRONG>
+<DD>o endere&#231;o de <code>n</code>;
+<DT><STRONG><TT>*p</TT></STRONG>
+<DD>o valor da vari&#225;vel apontada por <code>p</code>;
+</DL>
+
+<P>
+Muitas vezes, o uso de apontadores aparece associado &#224; aloca&#231;&#227;o
+din&#227;mica de mem&#243;ria. De facto, a fun&#231;&#227;o <code>malloc()</code>
+da biblioteca de C retorna o endere&#231;o da primeira posi&#231;&#224;o
+de mem&#243;ria do bloco reservado. Por exemplo:
+<PRE>
+ 
+   char *buf;
+   buf = (char *)malloc(BUF_SIZE * sizeof(char));
+</PRE>
+reserva um <I>buffer</I>, i.e. um bloco de mem&#243;ria, de tamanho
+<code>BUF_SIZE</code>, em princ&#237;pio para guardar car&#225;cteres.
+
+<P>
+Outro uso comum de endere&#231;os na linguagem C &#233; como 
+argumentos de fun&#231;&#245;es. De facto, a passagem dum
+endere&#231;o como argumento duma fun&#231;&#227;o permite
+que essa fun&#231;&#227;o altere o valor da vari&#225;vel apontada 
+pelo argumento, e deste modo tornar esta altera&#231;&#227;o
+vis&#237;vel fora dessa fun&#231;&#227;o. Por exemplo:
+<PRE>
+int inet_aton(char *cp, struct in_addr *inp);
+</PRE>
+a qual converte um endere&#231;o IP em formato <I>dotted decimal</I>
+no formato especificado na norma IP, usa 2 apontadores como 
+argumentos:
+<DL>
+<DT><STRONG><TT>cp</TT></STRONG>
+<DD>&#233; o endere&#231;o da posi&#231;&#227;o de mem&#243;ria
+com o primeiro car&#225;cter da <I>string</I> com o endere&#231;o em 
+formato <I>dotted decimal</I>;
+<DT><STRONG><TT>inp</TT></STRONG>
+<DD>&#233; o endere&#231;o da <code>struct in_addr</code>
+a inicializar com o endere&#231;o IP;
+</DL>
+permitindo que o valor convertido e escrito na vari&#225;vel
+apontada por <code>inp</code> seja vis&#237;vel fora de <code>inet_aton()</code>.
+(Uma alternativa era <code>inet_aton()</code> retornar o valor
+da convers&#227;o, o qual seria atribu&#237;do a uma vari&#225;vel de tipo
+apropriado.)
+
+<P>
+
+<H1><A NAME="SECTION00040000000000000000">
+Vectores e <I>strings</I></A>
+</H1>
+
+<P>
+Na linguagem C, vectores e <I>strings</I> est&#227;o intimamente
+ligados a endere&#231;os e apontadores.
+
+<P>
+
+<H4><A NAME="SECTION00040010000000000000">
+Vectores</A>
+</H4>
+
+<P>
+De facto, o nome dum vector denota o endere&#231;o do primeiro elemento
+desse vector. Por exemplo, o c&#243;digo seguinte:
+<PRE>
+   int fib[10];
+   int *p1 = fib;
+   int *p2 = &amp;(fib[0]);
+   fib[0] = 1;
+   printf(``fib = %p \t p1 = %p\t p2 = %p\n'',
+          fib, p1, p2);
+   printf(``fib[0] = %d \t*p1 = %d\t *p2 = %d\n'',
+          fib[0], *p1, *p2);
+</PRE>
+imprime qualquer coisa como:
+<PRE>
+fib = 0xbffffc68         p1 = 0xbffffc68         p2 = 0xbffffc68
+fib[0] = 1               *p1 = 1                 *p2 = 1
+</PRE>
+
+<P>
+Atendendo a que o nome dum vector &#233; um endere&#231;o, e n&#227;o uma
+vari&#225;vel, a seguinte atribui&#231;&#227;o:
+<PRE>
+   int fib[10];
+   int n;
+   fib = &amp;n;
+</PRE>
+n&#227;o &#233; legal, e o compilador assinala um erro de compila&#231;&#227;o.
+De facto, esta atribui&#231;&#227;o &#233; an&#225;loga &#224; seguinte:
+<PRE>
+   5 = 4;
+</PRE>
+que, espero, voc&#234;s reconhe&#231;am imediatamente como um erro.
+
+<P>
+O seguinte exemplo ilustra mais uma vez a rela&#231;&#227;o entre 
+vectores e endere&#231;os:
+<PRE>
+   char buf[BUF_SIZE]
+   int s;
+   ...
+   recv(s, buf, BUF_SIZE, 0);
+</PRE>
+Note que o nome do vector <TT>buf[]</TT> &#233; passado como segundo &#224; 
+fun&#231;&#227;o <code>recv()</code>, a qual espera como segundo argumento 
+um endere&#231;o de <TT>void</TT>. Ora, <code>buf</code> &#233; o endere&#231;o
+da primeira posi&#231;&#227;o do vector <code>buf[]</code>, i.e. o endere&#231;o
+dum car&#225;cter, h&#225; assim que usar um <I>cast</I> para indicar
+ao compilador que sabemos o que estamos a fazer, e n&#227;o nos
+incomodar com mensagens de aviso.
+
+<P>
+
+<H4><A NAME="SECTION00040020000000000000">
+<I>Strings</I></A>
+</H4>
+
+<P>
+Sendo uma <I>string</I> uma sequ&#234;ncia de car&#225;cteres guardados 
+em posi&#231;&#245;es de mem&#243;ria consecutivas, ``n&#227;o &#233; preciso 
+ser engenheiro'' para reconhecer que uma <I>string</I> pode ser 
+acedida usando o endere&#231;o do seu primeiro car&#225;cter. Assim,
+por exemplo:
+<PRE>
+   char *msg = ``Hello World!!!\n'';
+   printf(``%s'', msg);
+</PRE>
+gera a mensagem que seria de esperar.
+
+<P>
+De facto, conhecer o primeiro car&#225;cter duma <I>string</I> n&#227;o
+&#233; suficiente para especificar a <I>string</I>: qualquer prefixo
+dessa <I>string</I> tem o mesmo primeiro car&#225;cter. A conven&#231;&#227;o
+que se usa em C &#233; a seguinte: o &#250;ltimo car&#225;cter duma 
+<I>string</I> &#233; o car&#225;cter cujo c&#243;digo &#233; <code>0x00</code> 
+(lembre-se que o tipo <code>char</code> usa apenas um ``baite'') e que
+se costuma designar por <I>end of string character</I>.
+
+<P>
+Remover o car&#225;cter <code>0x00</code> do fim duma <I>string</I> pode
+conduzir a resultados inesperados, o menos in&#243;cuo dos quais
+ser&#225; um <I>core dump</I> durante a fase de teste.
+
+<P>
+
+<H4><A NAME="SECTION00040030000000000000">
+<I>Strings</I> e vectores de car&#225;cteres</A>
+</H4>
+
+<P>
+A rela&#231;&#227;o entre <I>strings</I> e vectores de car&#225;cteres
+parece tamb&#233;m ser &#243;bvia: ambos podem ser identificados usando
+os endere&#231;os dos seus primeiros elementos. 
+
+<P>
+No entanto a rela&#231;&#227;o entre <I>strings</I> e vectores de
+car&#225;cteres &#233; bem mais subtil do que a observa&#231;&#227;o
+acima deixa transparecer. Por exemplo:
+<PRE>
+   char buf[BUF_SIZE];
+   buf = ``Hello World!\n''
+</PRE>
+<B>n&#227;o</B> &#233; legal, embora os tipos dos 2 lados da atribui&#231;&#227;o
+sejam compat&#237;veis. O problema aqui foi j&#225; mencionado acima: 
+<code>buf</code> &#233; um endere&#231;o, ou melhor, uma constante, n&#227;o uma 
+vari&#225;vel, pelo que n&#227;o pode ser modificado. 
+
+<P>
+No entanto, o seguinte segmento j&#225; &#233; v&#225;lido:
+<PRE>
+   char buf[BUF_SIZE] = ``Hello World!\n'';
+</PRE>
+Neste caso, o que se passa &#233; que os primeiros elementos
+do vector <code>buf</code> s&#227;o inicializados com os car&#225;cteres
+da <I>string</I> <code>``Hello World!\\n''</code> (car&#225;cter 
+<I>end-of-string</I> inclu&#237;do).
+
+<P>
+Mas a &#250;nica maneira de inicializar um vector de car&#225;cteres
+&#233; quando da sua declara&#231;&#227;o? A resposta &#233; n&#227;o, como
+ilustra o seguinte exemplo:
+<PRE>
+   char buf[BUF_SIZE];
+   strcpy(buf, ``Hello World!\n'');
+</PRE>
+Neste caso usa-se a fun&#231;&#227;o:
+<PRE>
+   char *strcpy(char *dest, const char *src)
+</PRE>
+para copiar a <I>string</I> <TT>``Hello World!\n''</TT> para
+o vector <code>buf[]</code>. Este exemplo ilustra dois outros 
+aspectos j&#225; mencionados:
+<DL COMPACT>
+<DT>1.
+<DD>que o nome dum vector de elementos dum dado tipo &#233;
+de facto um endere&#231;o desse tipo;
+<DT>2.
+<DD>que o uma <I>string</I> &#233; denotada pelo endere&#231;o
+do seu primeiro car&#225;cter: de facto, o compilador traduz
+a <I>string</I> <TT>``Hello World!\n''</TT> no endere&#231;o
+da posi&#231;&#227;o de mem&#243;ria contendo o seu primeiro 
+car&#225;cter.
+</DL>
+
+<P>
+
+<H1><A NAME="SECTION00050000000000000000">
+Fun&#231;&#245;es</A>
+</H1>
+
+<P>
+Foi com surpresa que constatei a dificuldade de alguns de voc&#234;s
+em usar fun&#231;&#245;es em C.
+
+<P>
+Antes de mais, o conceito de fun&#231;&#227;o na linguagem C &#233; 
+essencialmente o conceito matem&#225;tico de fun&#231;&#227;o. Isto
+&#233;, uma fun&#231;&#227;o associa um valor dum conjunto, 
+``dom&#237;nio'', a um valor dum outro conjunto.
+
+<P>
+Por exemplo, a fun&#231;&#227;o <code>int fact(int n)</code>
+associa um inteiro ao seu factorial (i.e., a outro inteiro 
+que &#233; o valor da fun&#231;&#227;o matem&#225;tica factorial).
+
+<P>
+Um exemplo mais complexo &#233; a fun&#231;&#227;o
+<code>int inet_aton(char *cp, struct in_addr *inp)</code>, 
+a qual associa um inteiro a um par de endere&#231;os,
+o primeiro um endere&#231;o dum car&#225;cter, e o segundo 
+um endere&#231;o duma <code>struct in_addr</code>. Al&#233;m disso,
+a fun&#231;&#227;o <code>inet_aton()</code> tem um <I>efeito lateral</I>: 
+inicializar a <code>struct in_addr</code> cujo endere&#231;o &#233; o valor de 
+<code>inp</code>, com a representa&#231;&#227;o em formato de rede do 
+endere&#231;o IP, cujo valor em formato <I>dotted decimal</I>
+&#233; apontado por <code>cp</code>.
+
+<P>
+Note, que algumas fun&#231;&#245;es, como <code>fact()</code> n&#227;o t&#234;m 
+efeitos laterais, enquanto que outras fun&#231;&#245;es s&#243; t&#234;m 
+efeitos laterais (nomeadamente, aquelas cujo tipo do valor 
+retornado &#233; <code>void</code>).
+
+<P>
+Na linguagem C, as fun&#231;&#245;es est&#227;o associadas a diferentes 
+tipos de constru&#231;&#245;es, nomeadamente:
+
+<UL><LI>&#224; defini&#231;&#227;o;
+
+<LI>&#224; invoca&#231;&#227;o;
+
+<LI>&#224; declara&#231;&#227;o;
+
+</UL>
+
+<P>
+Nos par&#225;grafos seguintes consideramos cada uma destas constru&#231;&#245;es.
+
+<P>
+
+<H4><A NAME="SECTION00050010000000000000">
+Defini&#231;&#227;o duma fun&#231;&#227;o</A>
+</H4>
+
+<P>
+Qualquer fun&#231;&#227;o usada num programa em C tem que ser definida.
+A defini&#231;&#227;o duma fun&#231;&#227;o inclui as instru&#231;&#245;es que 
+a fun&#231;&#227;o executa quando &#233; invocada.
+
+<P>
+Por exemplo, a fun&#231;&#227;o <code>int fact(int n)</code> que calcula o
+factorial dum inteiro pode ser definida como se segue:
+<PRE>
+unsigned int fact(unsigned int n) {
+   unsigned int f;
+   for( f = 1; n &gt; 0; n--) 
+      f = f * n;
+   return f;
+}
+</PRE>
+
+<P>
+<code>n</code> &#233; o argumento (formal) da fun&#231;&#227;o <code>fact()</code>, a qual 
+retorna um inteiro sem sinal: o factorial de <code>n</code>.
+
+<P>
+Note que os argumentos formais duma fun&#231;&#227;o s&#227;o essencialmente
+vari&#225;veis usadas nas instru&#231;&#245;es que constituem a fun&#231;&#227;o
+propriamente dita. De facto, a fun&#231;&#227;o <code>fact</code> usa o 
+argumento <code>n</code> de modo an&#225;logo &#224; vari&#225;vel <code>f</code>.
+Os valores dos argumentos s&#227;o inicializados quando a fun&#231;&#227;o 
+&#233; invocada.
+
+<P>
+Note que um programador n&#227;o tem que definir todas as fun&#231;&#245;es
+que invoca num programa. Ali&#225;s, esta &#233; uma das vantagens do
+uso de fun&#231;&#245;es: reutilizar c&#243;digo que executa tarefas
+frequentemente usadas. Por exemplo, as fun&#231;&#245;es <code>inet_aton()</code> 
+e <code>printf()</code> est&#227;o definidas na biblioteca da linguagem
+C, pelo que n&#227;o &#233; necess&#225;rio, ou melhor, n&#227;o devem, ser
+definidas de novo.
+
+<P>
+
+<H4><A NAME="SECTION00050020000000000000">
+Invoca&#231;&#227;o duma fun&#231;&#227;o</A>
+</H4>
+
+<P>
+Como dito acima, as instru&#231;&#245;es especificadas na
+defini&#231;&#227;o duma fun&#231;&#227;o s&#227;o executadas
+quando essa fun&#231;&#227;o &#233; invocada.
+
+<P>
+Na linguagem C, uma fun&#231;&#227;o &#233; invocada especificando
+o seu nome e o valor de cada um dos seus argumentos. Por exemplo,
+a fun&#231;&#227;o <code>fact()</code> poderia ser invocada como se segue:
+<PRE>
+int main() {
+  int i, f;
+
+  for(i = 0; i &lt; 10; i++) {
+    f = fact(i);
+    printf("%d! = %d\n", i, f);
+  }
+}
+</PRE>
+Neste exemplo, a fun&#231;&#227;o <code>fact()</code> &#233; invocada 10 vezes,
+variando o valor do seu argumento de 0 a 9, inclusiv&#233;. Como 
+indicado, pode atribuir-se o valor retornado por uma fun&#231;&#227;o
+a uma vari&#225;vel de tipo apropriado. Poder-se-ia
+ter usado o valor retornado directamente na fun&#231;&#227;o
+<code>printf()</code>:
+<PRE>
+    printf("%d! = %d\n", i, fact(i));
+</PRE>
+De facto, o argumento duma fun&#231;&#227;o &#233; o valor da express&#227;o
+correspondente. Assim, neste caso, o 3o argumento de <code>printf()</code>
+&#233; o valor retornado pela invoca&#231;&#227;o <code>fact(i)</code>.
+
+<P>
+Lembre-se que os tipos das express&#245;es usadas nos argumentos na 
+invoca&#231;&#227;o duma fun&#231;&#227;o devem ser compat&#237;veis com
+os tipos especificados na defini&#231;&#227;o da fun&#231;&#227;o,
+devendo usar-se <I>casts</I> se necess&#225;rio. 
+
+<P>
+Por exemplo, em:
+<PRE>
+   char buf[BUF_SIZE];
+   int s;
+   ...
+   if( send(s, buf, BUF_SIZE, 0) == -1 ) {
+   ...
+</PRE>
+o segundo argumento de <code>send()</code> &#233; <code>buf</code>, o 
+nome dum vector de caracteres, ou seja, uma express&#227;o cujo tipo
+&#233; <code>char *</code>, o qual &#233; compat&#237;vel com o tipo do segundo
+argumento <code>void *</code> especificado na defini&#231;&#227;o de <code>send()</code>:
+<BLOCKQUOTE>
+<code>void *</code> &#233; um tipo especial: qualquer tipo endere&#231;o &#233;
+compat&#237;vel com o tipo <code>void *</code>, pelo que n&#227;o &#233;
+necess&#225;rio usar <I>casts</I>
+
+</BLOCKQUOTE>
+
+<P>
+
+<H4><A NAME="SECTION00050030000000000000">
+Declara&#231;&#227;o de fun&#231;&#245;es</A>
+</H4>
+
+<P>
+A declara&#231;&#227;o duma fun&#231;&#227;o consiste essencialmente no
+texto que precede o corpo duma fun&#231;&#227;o. Por exemplo, a
+fun&#231;&#227;o <code>fact()</code> pode ser declarada como se segue:
+<PRE>
+unsigned int fact(unsigned int);
+</PRE>
+
+<P>
+A linguagem C requer que uma fun&#231;&#227;o seja declarada
+antes de ser invocada, sempre. Fazer a 
+declara&#231;&#227;o duma fun&#231;&#227;o antes da sua 
+invoca&#231;&#227;o permite que o compilador verifique se a 
+fun&#231;&#227;o &#233; invocada correctamente: nomeadamente 
+que &#233; usada numa express&#227;o com o tipo apropriado 
+e que os tipos dos seus argumentos s&#227;o compat&#237;veis 
+com os declarados.
+
+<P>
+Tipicamente, as declara&#231;&#245;es de fun&#231;&#245;es s&#227;o
+feitas em <I>header files</I>, as quais dever&#227;o ser
+inclu&#237;das nos ficheiros que invocam essas fun&#231;&#245;es.
+Por exemplo, <code>&lt;stdio.h&gt;</code> inclui a declara&#231;&#227;o de
+<code>printf()</code>. 
+
+<P>
+<B>Obs.</B> Se definir a fun&#231;&#227;o num ficheiro, antes
+de invocar essa fun&#231;&#227;o, n&#227;o precisa de a declarar.
+
+<P>
+<HR>
+<H1><A NAME="SECTION00060000000000000000">
+About this document ...</A>
+</H1>
+ <P>
+This document was generated using the
+<A HREF="http://www-dsed.llnl.gov/files/programs/unix/latex2html/manual/"><STRONG>LaTeX</STRONG>2<tt>HTML</tt></A> translator Version 98.2 beta6 (August 14th, 1998)
+<P>
+Copyright &#169; 1993, 1994, 1995, 1996,
+<A HREF="http://cbl.leeds.ac.uk/nikos/personal.html">Nikos Drakos</A>, 
+Computer Based Learning Unit, University of Leeds.
+<BR>
+Copyright &#169; 1997, 1998,
+<A HREF="http://www-math.mpce.mq.edu.au/~ross/">Ross Moore</A>, 
+Mathematics Department, Macquarie University, Sydney.
+<P>
+The command line arguments were: <BR>
+ <STRONG>latex2html</STRONG> <TT>-t INST-C -split 0 inst_C.tex</TT>
+<P>
+The translation was initiated by Pedro Souto on 2000-04-01<HR>
+<ADDRESS>
+<I>Pedro Souto</I>
+<BR><I>2000-04-01</I>
+</ADDRESS>
+</BODY>
+</HTML>

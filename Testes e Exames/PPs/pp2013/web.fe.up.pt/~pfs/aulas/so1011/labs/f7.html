@@ -1,0 +1,97 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"
+            "http://www.w3.org/TR/REC-html40/loose.dtd">
+<HTML>
+<HEAD>
+<TITLE>SO-MIEEC: f7</TITLE>
+
+<META http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta name="generator" content="Bluefish 1.0.7">
+<STYLE type="text/css">
+.li-itemize{margin:1ex 0ex;}
+.li-enumerate{margin:1ex 0ex;}
+.dd-description{margin:0ex 0ex 1ex 4ex;}
+.dt-description{margin:0ex;}
+.toc{list-style:none;}
+.thefootnotes{text-align:left;margin:0ex;}
+.dt-thefootnotes{margin:0em;}
+.dd-thefootnotes{margin:0em 0em 0em 2em;}
+.footnoterule{margin:1em auto 1em 0px;width:50%;}
+.caption{padding-left:2ex; padding-right:2ex; margin-left:auto; margin-right:auto}
+.title{margin:2ex auto;text-align:center}
+.center{text-align:center;margin-left:auto;margin-right:auto;}
+.flushleft{text-align:left;margin-left:0ex;margin-right:auto;}
+.flushright{text-align:right;margin-left:auto;margin-right:0ex;}
+DIV TABLE{margin-left:inherit;margin-right:inherit;}
+PRE{text-align:left;margin-left:0ex;margin-right:auto;}
+BLOCKQUOTE{margin-left:4ex;margin-right:4ex;text-align:left;}
+TD P{margin:0px;}
+.boxed{border:1px solid black}
+.textboxed{border:1px solid black}
+.vbar{border:none;width:2px;background-color:black;}
+.hbar{border:none;height:2px;width:100%;background-color:black;}
+.hfill{border:none;height:1px;width:200%;background-color:black;}
+.vdisplay{border-collapse:separate;border-spacing:2px;width:auto; empty-cells:show; border:2px solid red;}
+.vdcell{white-space:nowrap;padding:0px;width:auto; border:2px solid green;}
+.display{border-collapse:separate;border-spacing:2px;width:auto; border:none;}
+.dcell{white-space:nowrap;padding:0px;width:auto; border:none;}
+.dcenter{margin:0ex auto;}
+.vdcenter{border:solid #FF8000 2px; margin:0ex auto;}
+.minipage{text-align:left; margin-left:0em; margin-right:auto;}
+.marginpar{border:solid thin black; width:20%; text-align:left;}
+.marginparleft{float:left; margin-left:0ex; margin-right:1ex;}
+.marginparright{float:right; margin-left:1ex; margin-right:0ex;}
+.theorem{text-align:left;margin:1ex auto 1ex 0ex;}
+.part{margin:2ex auto;text-align:center}
+</STYLE>
+</HEAD>
+<BODY >
+<!--HEVEA command line is: /usr/bin/hevea f6 -->
+<!--CUT DEF section 1 --><!--TOC paragraph <FONT SIZE=4><B>Arquitecturas e Sistemas Operativos (2ª Parte)</B></FONT><FONT SIZE=4> 
+</FONT><FONT SIZE=4><B>3º Ano MIEEC</B></FONT><FONT SIZE=4><BR>
+ </FONT><FONT SIZE=4><B>Folha de Problemas nº 6: </B></FONT><FONT SIZE=4><B><I>Semáforos</I></B></FONT><FONT SIZE=4><B> e Variáveis de Condição POSIX</B></FONT><FONT SIZE=4><BR>
+</FONT>-->
+<H5 CLASS="paragraph"><!--SEC ANCHOR --><FONT SIZE=4><B>Sistemas Operativos</B></FONT><FONT SIZE=4> 
+</FONT><FONT SIZE=4><B>3º Ano MIEEC</B></FONT><FONT SIZE=4><BR>
+ </FONT><FONT SIZE=4><B>Folha de Problemas nº 7: </B></FONT><FONT SIZE=4><B>Variáveis de Condição POSIX</B></FONT><FONT SIZE=4><BR>
+</FONT></H5><!--SEC END --><!--TOC section Questões--><HR>
+<H2 CLASS="section"><!--SEC ANCHOR -->Questões</H2><!--SEC END --><OL CLASS="enumerate" type=1><LI CLASS="li-enumerate">Sobre variáveis de condição POSIX. Admita que o <I>thread</I> A
+executa <CODE>pthread_cond_signal()</CODE> e que imediatamente a seguir
+o <I>thread</I> B executa a função <CODE>pthread_cond_wait()</CODE>
+sobre a mesma variável de condição. Para cada um dos seguintes 
+cenários:
+<OL CLASS="enumerate" type=a><LI CLASS="li-enumerate">
+<CODE>pthread_cond_signal()</CODE> desbloqueou o <I>thread</I> C que estava bloqueado nessa variável de condição;
+</LI><LI CLASS="li-enumerate"><CODE>pthread_cond_signal()</CODE> não desbloqueou qualquer <I>thread</I> bloqueado nessa variável de condição.
+</LI></OL>
+indique qual o resultado da invocação de <CODE>pthread_cond_wait()</CODE> pelo segundo <I>thread</I>? Justifique.
+</LI><LI CLASS="li-enumerate">As primitivas <CODE>pthread_cond_wait()/pthread_cond_signal()</CODE> são muito parecidas com as primitivas <CODE>sleep()/wakeup()</CODE> usadas na ilustração do problema do <I>lost-wakeup</I> nas aulas teóricas. Por que razão as primitivas de <CODE>pthread_cond_t</CODE> não causam o mesmo problema?</LI></OL><!--TOC section Problemas-->
+<H2 CLASS="section"><!--SEC ANCHOR -->Problemas</H2><!--SEC END --><!--TOC paragraph Nota-->
+<H3 CLASS="paragraph"><!--SEC ANCHOR -->Nota</H3><!--SEC END --><P> Os seus programas deverão usar a biblioteca <CODE>libpthread</CODE>. Não se esqueça de indicá-lo ao compilador, i.e. especificar <CODE>-lpthread</CODE> na linha de comandos.</P><P>Deverá ainda definir a variável <CODE>_REENTRANT</CODE> na linha de comandos do
+<CODE>gcc</CODE>, usando o argumento <CODE>-D_REENTRANT</CODE>, para garantir que
+o compilador usa as funções apropriadas da biblioteca C.</P><P>Por outras palavras, invoque o compilador de C da seguinte maneira:</P><PRE CLASS="verbatim"> gcc -D_REENTRANT -lpthread
+</PRE><OL CLASS="enumerate" type=1>
+
+
+<LI CLASS="li-enumerate">Na solução do problema do <I>bounded buffer</I> com
+<I>mutexes</I> (problema 2 da <A href="f5.html"><TT>folha5</TT></A>) os
+<I>threads</I> eram forçados a realizar uma espera activa. Uma
+das vantagens das variáveis de condição é precisamente eliminar a
+necessidade de espera activa.<OL CLASS="enumerate" type=a><LI CLASS="li-enumerate">Modifique a sua implementação do <I>bounded buffer</I> com
+<I>mutexes</I>, i.e. o tipo <CODE>bbuf_t</CODE> e as funções
+<CODE>enter()</CODE> e <CODE>remove()</CODE> para usar variáveis de condição.</LI><LI CLASS="li-enumerate">Teste a sua implementação do <I>bounded buffer</I> usando
+programa semelhante ao que usou no problema 1 da <A href="f6.html#1"><TT>folha6</TT></A>, e no
+problema 2 da <A href="f5.html"><TT>folha5</TT></A>.<P><B>Sugestão:</B> Modifique a sua solução para o problema 2 da
+<A href="f5.html"><TT>folha5</TT></A>. Seja muito cuidadoso, doutro modo
+pode introduzir <I>bugs</I> muito difíceis de detectar.</P><P><B>IMP</B> Use a função <CODE>check()</CODE> para detectar se o
+<I>bounded buffer</I> é corrompido devido a <I>race conditions.</I></P></LI><LI CLASS="li-enumerate">Compare os tempos de execução desta solução com aqueles que
+obteve nas soluções com <I>mutexes</I> e com semáforos. Tente
+explicar as diferenças observadas.</LI></OL></LI>
+<li>Resolva o problema 2 da <A href="f6.html#2"><TT>folha6</TT></A> -- i.e. o problema dos <i>readers-writers</i> -- usando <i>mutexes</i> e variáveis de condição POSIX. </li>
+<li>Resolva o problema 3 da <A href="f6.html#3"><TT>folha6</TT></A> -- i.e. o algoritmo <i>merge-sort</i> -- usando <i>mutexes</i> e variáveis de condição POSIX. </li>
+</OL><!--CUT END -->
+<!--HTMLFOOT-->
+<!--ENDHTML-->
+<!--FOOTER-->
+<HR SIZE=2><BLOCKQUOTE CLASS="quote"><EM>This document was translated from L<sup>A</sup>T<sub>E</sub>X by
+</EM><A HREF="http://hevea.inria.fr/index.html"><EM>H</EM><EM><FONT SIZE=2><sup>E</sup></FONT></EM><EM>V</EM><EM><FONT SIZE=2><sup>E</sup></FONT></EM><EM>A</EM></A><EM>.</EM></BLOCKQUOTE></BODY>
+</HTML>

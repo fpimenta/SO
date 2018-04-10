@@ -1,0 +1,59 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<title>SO 2011-2012: Notas sobre a Prova de Programação</title>
+<meta name="generator" content="Bluefish 2.0.2" >
+<meta name="author" content="pedro" >
+<meta name="date" content="2012-04-30T23:40:39+0100" >
+<meta name="copyright" content="">
+<meta name="keywords" content="">
+<meta name="description" content="">
+<meta name="ROBOTS" content="NOINDEX, NOFOLLOW">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8">
+<meta http-equiv="content-style-type" content="text/css">
+<meta http-equiv="expires" content="0">
+</head>
+<body>
+
+<h2>SO 2011-2012: Notas sobre a Prova de Programação</h2>
+<hr>
+<h3>Objectivo</h3>
+
+<p>Estas notas têm por objectivo fornecer-vos mais alguma informação sobre a prova prática que deverão realizar no próximo dia 2 de Maio, pelas 15:00, na sala B104.</p>
+
+<h3>Duração da Prova</h3>
+
+<p>A prova tem duração prevista para 2 horas, havendo ainda mais 30 minutos de tolerância.</p>
+
+<h3>Informação Acessível</h3>
+<p>Durante o exame terão acesso a toda a informação disponível no disco do computador onde realizam o exame, o qual deverá conter essencialmente a mesma documentação que os discos dos computadores das salas de aula.</p>
+<p>Fornecerei ainda uma <a href="http://web.fe.up.pt/%7Epfs/aulas/so2012/pp/proto.h">lista com os protótipos</a> de funções que vos poderão ser úteis. (<b>IMP</b>- Não deverão incluir este ficheiro nos vossos ficheiros com código C, mas sim os especificados nas <i>man pages</i> das funções respectivas.) </p>
+<p>Procurarei ainda disponibilizar através do SIGEX as transparências das aulas teóricas bem como o material relativo às aulas laboratoriais. Notem que esta disponibilização é <b>condicional</b>, pelo que devem preparar-se para a possibilidade de tal não ser possível.</p>
+<p>Para finalizar este tópico, deixo-vos uma recomendação. Não se iludam com a quantidade de informação disponível. É facultada apenas para que vocês possam esclarecer uma dúvida de "última hora". Se vocês estiverem preparados como deve ser, só precisarão de consultar a <a href="http://web.fe.up.pt/%7Epfs/aulas/so2012/pp/proto.h">lista com os protótipos</a> e ocasionalmente a <i>man page</i> duma das funções dessa lista, para esclarecer pormenores relativos aos argumentos ou valores de retorno.</p>
+
+<h3>A Prova</h3>
+
+<p>Nesta prova deverão resolver <b>um</b> problema sobre <i>threads</i> POSIX e os mecanismos de sincronização POSIX.</p>
+
+<p>De forma a que possam ter crédito parcial o problema tem várias alíneas, 8 mais precisamente, cada uma das quais corresponde a um passo no desenvolvimento da solução para o problema proposto. A resposta a cada uma dessas alíneas deverá ser desenvolvida num diretório/pasta previsto para o efeito.</p> 
+
+<p>A decomposição do problema em 8 alíneas é tal que na minha solução, o número de linhas de código novas em cada uma delas anda à volta de 10, com excepção de 2 alíneas, uma com 16 e outra com 21 linhas de código novas. </p>
+
+<p> A prova foi estruturada desta forma de modo a tentar automatizar a avaliação de cada uma das alíneas e simultaneamente tentar que vocês tenham uma classificação que reflita as vossas competências. Assim, é importante que vocês sigam as especificações. Por exemplo, se o enunciado diz que o ficheiro com a solução da alínea a) deverá encontrar-se no diretório de nome <tt>src/a</tt>, é importante que seja esse o diretório, e não <tt>src/A</tt> ou <tt>Src/a</tt> (em Unix/Linux, a capitalização das letras é relevante) ou outro nome que vos ocorra no momento. Para facilitar, fornecerei um arquivo com a estrutura de diretórios pretendida. Cada um desses diretório inclui já os ficheiros que vocês deverão alterar.</p>
+
+<p>Outro aspecto relacionado com  a automatização da avaliação diz respeito às <i>strings</i> que os vossos programas deverão imprimir.  Dado o tipo de problemas em SO, o recurso a testes unitários não é apropriado. A solução que encontramos é especificar no enunciado <i>strings</i> que os vossos programas deverão imprimir indicando o processamento que fazem e o resultado desse processamento. Como a a avaliação deverá ser feita por <i>scripts</i> é essencial que as <i>strings</i> que os vossos programas imprimem sejam exactamente aquelas especificadas. Para facilitar, os ficheiros acima mencionados conterão as <i>strings</i> de formatação que deverão ser usadas. É também incluido um diretório, contendo a saída esperada pelos vossos programas quando invocados com determinados argumentos.</p>
+
+<p>Ainda no sentido de facilitar o vosso trabalho, disponibilizarei os ficheiros <a href="http://web.fe.up.pt/%7Epfs/aulas/so2012/pp/util.c"><tt>util.c</tt></a> e <a href="http://web.fe.up.pt/%7Epfs/aulas/so2012/pp/util.h"><tt>util.h</tt></a> com a função <code>parse_int_arg()</code> para processar argumentos da linha de comando que sejam inteiros. A outra função fornecida nestes ficheiros é <code>print_usage()</code> a qual deverá ser invocada se o programa for invocado com os argumentos incorretos.</p>
+
+<p>Finalmente, incluirei ainda em cada diretório uma <b>makefile</b> como a que se encontra no ficheiro <a href="http://web.fe.up.pt/%7Epfs/aulas/so2012/pp/Makefile"><tt>Makefile</tt></a> para facilitar a compilação do programa correspondente, bastando executar o comando <tt>make</tt>, sem argumentos, na linha de comando. Estas makefiles permitem ainda remover o código resultante da compilação executando o comando <tt>make clean</tt> que poderá ser usado como descrito abaixo.</p>
+
+<h3>Submissão</h3>
+
+<p>No final da prova deverão comprimir o diretório pai dos diferentes diretórios com o código que desenvolveram e fazer o <i>upload</i> do ficheiro resultante através do SIGEX. Para reduzir o tamanho do arquivo é conveniente que após resolverem cada alínea executem <tt>make clean</tt>, eliminando deste modo os ficheiros objeto e o executável.</p>
+
+<h3>Avaliação</h3>
+
+<p>Tratando-se duma prova de programação a avaliação basear-se-à fundamentalmente na execução do código que submeterem. Mais concretamente, tomarei em consideração na avaliação das provas os seguintes aspectos, os quais terão os pesos indicados entre parêntesis: compilação e código(25%), execução (70%) e outro (5%). No que diz respeito ao código consideraremos a sua legibilidade, a sua lógica e o processamento de erros. Quanto à compilação estaremos atentos aos "avisos" desnecessários. No que diz respeito aos outros aspectos consideraremos essencialmente o cumprimento das especificações, nomeadamente no que diz respeito aos nomes dos ficheiros e às <i>strings</i> impressas.</p>
+</body>
+</html>

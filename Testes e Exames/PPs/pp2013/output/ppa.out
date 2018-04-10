@@ -1,0 +1,14 @@
+$ ./ppa 3 5 10000
+Checker: starting
+
+	Parent starting
+	Parent finishing
+   Baby bird beginning
+   Baby bird finishing
+   Baby bird beginning
+   Baby bird finishing
+   Baby bird beginning
+   Baby bird finishing
+Simulation finished
+
+Checker: error in foodbits : 0

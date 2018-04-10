@@ -1,0 +1,19 @@
+$ ./ppb 3 5 10000
+Checker: starting
+
+	Parent starting
+	Parent received args f (5), r (10000), working (0)
+	Parent finishing
+   Baby bird 0 beginning
+   Baby received args id (0), eating (0)
+   Baby bird 0 finishing
+Number of bits of food eaten by baby 0: 0 / 50000 
+   Baby bird 2 beginning
+   Baby received args id (2), eating (0)
+   Baby bird 2 finishing
+   Baby bird 1 beginning
+   Baby received args id (1), eating (0)
+   Baby bird 1 finishing
+Number of bits of food eaten by baby 1: 0 / 50000 
+Number of bits of food eaten by baby 2: 0 / 50000 
+Simulation finished

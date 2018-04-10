@@ -1,0 +1,42 @@
+./ppc 3 5 10000
+Checker: starting
+
+	Parent starting
+   Baby bird 0 beginning
+   Baby bird 2 beginning
+   Baby bird 1 beginning
+Checker: error in foodbits : -1
+Checker: error in foodbits : -1
+Checker: error in foodbits : -1
+Checker: error in foodbits : -1
+Checker: error in foodbits : -1
+Checker: error in foodbits : -1
+Checker: error in foodbits : -1
+Checker: error in foodbits : -1
+Checker: error in foodbits : -1
+Checker: error in foodbits : -1
+Checker: error in foodbits : -1
+Checker: error in foodbits : -1
+Checker: error in foodbits : -1
+Checker: error in foodbits : -1
+Checker: error in foodbits : -1
+Checker: error in foodbits : -1
+Checker: error in foodbits : -1
+Checker: error in foodbits : -1
+Checker: error in foodbits : -1
+Checker: error in foodbits : -1
+Checker: error in foodbits : -1
+Checker: error in foodbits : -1
+	Parent finishing
+   Baby bird 1 finishing
+Checker: finishing time!
+
+Checker: exiting
+
+   Baby bird 0 finishing
+Number of bits of food eaten by baby 0: 21475 / 50000 
+Number of bits of food eaten by baby 1: 11348 / 50000 
+   Baby bird 2 finishing
+Number of bits of food eaten by baby 2: 17223 / 50000 
+
+Simulation finished

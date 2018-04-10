@@ -1,0 +1,152 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"
+            "http://www.w3.org/TR/REC-html40/loose.dtd">
+<HTML>
+<HEAD>
+<TITLE>f6</TITLE>
+
+<META http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta name="generator" content="Bluefish 2.0.2" >
+<STYLE type="text/css">
+.li-itemize{margin:1ex 0ex;}
+.li-enumerate{margin:1ex 0ex;}
+.dd-description{margin:0ex 0ex 1ex 4ex;}
+.dt-description{margin:0ex;}
+.toc{list-style:none;}
+.thefootnotes{text-align:left;margin:0ex;}
+.dt-thefootnotes{margin:0em;}
+.dd-thefootnotes{margin:0em 0em 0em 2em;}
+.footnoterule{margin:1em auto 1em 0px;width:50%;}
+.caption{padding-left:2ex; padding-right:2ex; margin-left:auto; margin-right:auto}
+.title{margin:2ex auto;text-align:center}
+.center{text-align:center;margin-left:auto;margin-right:auto;}
+.flushleft{text-align:left;margin-left:0ex;margin-right:auto;}
+.flushright{text-align:right;margin-left:auto;margin-right:0ex;}
+DIV TABLE{margin-left:inherit;margin-right:inherit;}
+PRE{text-align:left;margin-left:0ex;margin-right:auto;}
+BLOCKQUOTE{margin-left:4ex;margin-right:4ex;text-align:left;}
+TD P{margin:0px;}
+.boxed{border:1px solid black}
+.textboxed{border:1px solid black}
+.vbar{border:none;width:2px;background-color:black;}
+.hbar{border:none;height:2px;width:100%;background-color:black;}
+.hfill{border:none;height:1px;width:200%;background-color:black;}
+.vdisplay{border-collapse:separate;border-spacing:2px;width:auto; empty-cells:show; border:2px solid red;}
+.vdcell{white-space:nowrap;padding:0px;width:auto; border:2px solid green;}
+.display{border-collapse:separate;border-spacing:2px;width:auto; border:none;}
+.dcell{white-space:nowrap;padding:0px;width:auto; border:none;}
+.dcenter{margin:0ex auto;}
+.vdcenter{border:solid #FF8000 2px; margin:0ex auto;}
+.minipage{text-align:left; margin-left:0em; margin-right:auto;}
+.marginpar{border:solid thin black; width:20%; text-align:left;}
+.marginparleft{float:left; margin-left:0ex; margin-right:1ex;}
+.marginparright{float:right; margin-left:1ex; margin-right:0ex;}
+.theorem{text-align:left;margin:1ex auto 1ex 0ex;}
+.part{margin:2ex auto;text-align:center}
+</STYLE>
+</HEAD>
+<BODY >
+<!--HEVEA command line is: /usr/bin/hevea f6 -->
+<!--CUT DEF section 1 --><!--TOC paragraph <FONT SIZE=4><B>Arquitecturas e Sistemas Operativos (2ª Parte)</B></FONT><FONT SIZE=4> 
+</FONT><FONT SIZE=4><B>3º Ano MIEEC</B></FONT><FONT SIZE=4><BR>
+ </FONT><FONT SIZE=4><B>Folha de Problemas nº 6: </B></FONT><FONT SIZE=4><B><I>Semáforos</I></B></FONT><FONT SIZE=4><B> e Variáveis de Condição POSIX</B></FONT><FONT SIZE=4><BR>
+</FONT>-->
+<H5 CLASS="paragraph"><!--SEC ANCHOR --><FONT SIZE=4><B>Sistemas Operativos</B></FONT><FONT SIZE=4> 
+</FONT><FONT SIZE=4><B>3º Ano MIEEC</B></FONT><FONT SIZE=4><BR>
+ </FONT><FONT SIZE=4><B>Folha de Problemas nº 6: </B></FONT><FONT SIZE=4><B><I>Semáforos</I></B></FONT><FONT SIZE=4><BR>
+</FONT></H5><!--SEC END --><HR>
+<FONT SIZE=4><B>IMPORTANTE</B> Para tirar mais proveito da resolução dos problemas de programação deverá compreender os conceitos teóricos subjacentes. O conjunto de questões que se segue, e que precede os problemas, tem por objetivo contribuir para essa compreensão. Assim, antes de resolver os problemas de programação deverá responder a estas questões.</FONT>
+<!--TOC section Questões-->
+<H2 CLASS="section"><!--SEC ANCHOR -->Questões</H2><!--SEC END --><OL CLASS="enumerate" type=1><LI CLASS="li-enumerate">Explique como poderia usar uma variável do tipo <CODE>sem_t</CODE> de <CODE>lipthread</CODE> para garantir exclusão mútua no acesso a uma secção crítica.</LI><LI CLASS="li-enumerate">Considere a seguinte implementação de semáforos.
+<PRE CLASS="verbatim">typedef struct {
+        pthread_mutex_t lock;
+        unsigned int cnt;
+} my_sem_t;
+int my_sem_init(my_sem_t *sem, int n) {
+        pthread_mutex_init(&amp;(sem-&gt;lock), NULL);
+        sem-&gt;cnt = n;
+}
+int my_sem_down(my_sem_t *sem) {
+        pthread_mutex_lock(&amp;(sem-&gt;lock));
+        if( sem-&gt;cnt &gt; 0 ) {
+                 sem-&gt;cnt--;
+                 pthread_mutex_unlock(&amp;(sem-&gt;lock));
+                 return 1;
+        } else {
+                 pthread_mutex_unlock(&amp;(sem-&gt;lock));
+                 return 0;
+        }
+}
+int my_sem_up(my_sem_t *sem) {
+        pthread_mutex_lock(&amp;(sem-&gt;lock));
+        sem-&gt;cnt++;
+        pthread_mutex_unlock(&amp;(sem-&gt;lock));
+}
+</PRE><OL CLASS="enumerate" type=a><LI CLASS="li-enumerate">
+Qual a diferença principal entre a função <CODE>my_sem_down()</CODE> acima e a função <CODE>sem_wait()</CODE> do tipo <CODE>sem_t</CODE> de <TT>libpthread</TT>? Em que medida deverá o código que usa <CODE>my_sem_down()</CODE> diferir daquele que usa <CODE>sem_wait()</CODE>?
+</LI><LI CLASS="li-enumerate">Qual a diferença principal entre a função <CODE>my_sem_up()</CODE> acima e a função <CODE>sem_post()</CODE> do tipo <CODE>sem_t</CODE> de <TT>libpthread</TT>? Em que medida deverá o código que usa <CODE>my_sem_up()</CODE> diferir daquele que usa <CODE>sem_post()</CODE>?
+</LI><LI CLASS="li-enumerate">Qual a diferença principal entre <CODE>my_sem_t</CODE> e <CODE>sem_t</CODE>? Esta diferença afecta a eficiência do código? E a sua correcção?
+</LI></OL>
+</LI></OL><!--TOC section Problemas-->
+<H2 CLASS="section"><!--SEC ANCHOR -->Problemas</H2><!--SEC END --><!--TOC paragraph Nota-->
+<H3 CLASS="paragraph"><!--SEC ANCHOR -->Nota</H3><!--SEC END --><P> Para compilar os seus programas com a biblioteca  <CODE>libpthread</CODE> deverá usar a opção <CODE>-pthread</CODE> do <CODE>gcc </CODE>na linha de comandos:</P><PRE CLASS="verbatim"> gcc -pthread
+</PRE><OL CLASS="enumerate" type=1><a name="1"><LI CLASS="li-enumerate"></a>Considere a implementação do problema do <I>bounded buffer</I>
+com semáforos apresentada na aula teórica.<OL CLASS="enumerate" type=a><LI CLASS="li-enumerate">
+Modifique-a para usar semáforos <I>anónimos</I> (e
+<I>mutexes</I>) POSIX.<P><B>IMP.</B> Use também uma variável de contagem cnt como no
+problema 2 da <A href="f5.html"><TT>folha 5</TT></A>: é usada pela função 
+<TT>check() check.c</TT>.</P></LI><LI CLASS="li-enumerate">Escreva um programa que teste a sua solução. O seu programa
+deverá ser análogo ao usado no problema 2 da
+<A href="f5.html"><TT>folha 5</TT></A>. I.e., o <I>thread</I>
+principal deverá criar 3 <I>threads</I> produtores e outros 3
+consumidores. Além destes deverá criar ainda um outro
+<I>thread</I> cuja função é verificar cada 100 ms se o bounded
+buffer foi corrompido devido a race conditions.<P>Cada <I>thread</I> produtor deverá produzir 10 M items: inteiros
+com o seu identificador (entre 0 e 2). Além disso, deve imprimir
+uma mensagem no início e outra no fim da sua execução.</P><P>De modo análogo, cada <I>thread</I> consumidor deve consumir 10
+M items e manter o número de items consumidos que foram produzidos
+por cada um dos <I>threads</I> produtores. Além disso deve
+imprimir uma mensagem no início e outra no fim da sua execução.
+Nesta útlima deverá imprimir o número de items consumidos
+discriminados por <I>thread</I> produtor.</P><P><B>Dica</B> Pode também adaptar o programa que desenvolveu para
+o problema 2 da <A href="f5.html"><TT>folha 5</TT></A>. Mas seja
+extremamente cuidadoso, doutra forma sujeita-se a introduzir
+<I>bugs</I> de difícil identificação.</P></LI><LI CLASS="li-enumerate">Compare os tempos de execução desta solução com aqueles que
+obteve nas soluções com <I>mutexes</I>. Tente explicar as
+diferenças observadas.
+</LI></OL></LI>
+
+<a name="2"><LI CLASS="li-enumerate"></a>Outro problema de concorrência clássico é o dos <i>leitores-escritores (readers-writers)</i>. Um conjunto de <i>threads</i>/processos acedem a uma variável partilhada sendo que alguns deles, os <i>leitores</i>, executam apenas operações de leitura, enquanto que os restantes, os escritores, executam apenas operações de escrita.<p>Atendendo a que as operações de leitura não interferem entre si, deve permitir-se a execução simultânea de várias operações de leitura para aumentar a concorrência. Pelo contrário, operações de escrita interferem quer com outras operações de escrita quer com operações de leitura pelo que deverão ser feitas em exclusão mútua. I.e. quando um escritor escreve na variável, nenhum outro processo, seja ele escritor ou leitor deverá aceder à variável partilhada.</p>
+
+<p>Neste problema pretende-se que resolva uma variante deste problema clássico usando semáforos anónimos POSIX. Em particular, há duas variáveis globais inteiras <code>m</code> e <code>n</code> as quais devem ser inicializadas a 0 pelo <i>thread</i> principal. O <i>thread</i> principal cria ainda 2 <i>threads</i> escritores e 2 <i>threads</i> leitores, e fica à espera que eles terminem. Após a terminação dos 4 <i>threads</i> o <i>thread</i> principal deve imprimir os valores finiais das 2 variáveis.</p>
+
+<p>Cada um dos <i>threads</i> escritores deverá executar um ciclo 50 milhões de vezes no qual incrementa em 1 cada uma das 2 variáveis, de modo a que o seu valor após cada iteração deverá ser idêntico e no final deverá ser de 100 milhões.
+</p>
+
+<p>Cada um dos <i>threads</i> leitores deverá executar um ciclo 50 milhões de vezes no qual lê as 2 variáveis, devendo imprimir os valores lidos em iterações múltiplas de 1 milhão. Pretende-se que os valores impressos das duas variáveis em cada iteração sejam idênticos.  
+</p>
+
+<p><b>Nota:</b> Quando há pelo menos um leitor a ler as variáveis, nenhum dos escritores deverá poder alterar o valor dessas variáveis, contudo é possível que outro leitor as leia. Uma questão crítica é:
+<blockquote>Se um leitor estiver a ler as variáveis e um escritor estiver bloqueado à espera para fazer a escrita, deverá ou não permitir-se que outro leitor inicie a sua leitura?</blockquote>
+As alternativas são claras:</p>
+<OL CLASS="enumerate" type=a><LI CLASS="li-enumerate">Sim. Neste caso maximiza-se a concorrência, mas os escritores podem ser continuamente preteridos a favor dos leitores. I.e. os escritores sofrem de <b>mingua</b>.</LI><LI CLASS="li-enumerate">Não. Neste caso a solução é mais equitativa mas pode reduzir a concorrência. </LI></OL>
+Tente resolver o problema usando as duas estratégias (uma de cada vez). Os resultados observados são aqueles que esperava?
+</LI>
+
+<a name="3"><LI CLASS="li-enumerate"></a>Um algoritmo de ordenação de vetores particularmente apropriado para sistemas multi-processador/<i>multi-core</i> é o algoritmo <i>merge-sort</i>. A ideia deste algoritmo é partir o vetor a ordenar em subvetores disjuntos, i.e. sem elementos comuns. Fazer a ordenação destes subvetores separadamente (<i>sort</i>) e depois fundir (<i>merge</i>) cada par de subvetores já ordenados.  Esta última ordenação é particularmente eficiente pois cada um dos subvetores está ordenado. Contudo, só pode ser iniciada depois dos 2 subvetores correspondentes terem sido ordenados. 
+
+<p>No algoritmo original, concebido para sistemas uniprocessador, o vetor a ordenar é partido em 2, e cada um dos 2 subvetores resultantes é ordenado e posteriormente fundidos. Na formulação recursiva, a ordenação é feita aplicando o algoritmo de novo, até ao tamanho do vetor a ordenar ter um único elemento, e consequentemente estar ordenado.</p>
+
+<p>Neste problema pretende-se que faça uma implementação de <i>merge-sort</i> para ordenar por ordem crescente um vetor com 1 milhão de inteiros. Este vetor é inicializado por ordem decrescente pelo <i>thread</i> principal, o qual deverá ainda criar outros <i>threads</i> para fazerem a ordenação. O nº de <i>threads</i> que realizam a ordenação deverá ser passado ao programa através dum argumento da linha de comando, devendo o <i>thread</i> principal também ordenar partes do vetor. A sua solução não precisa implementar o algoritmo <i>merge-sort</i> puro, mas deverá procurar maximizar a concorrência. Pode usar semáforos para sincronização entre <i>threads</i></p>
+
+<p>Quando a ordenação tiver terminado, o <i>thread</i> principal deverá verificar se a ordenação foi ou não correctamente realizada.</p> 
+
+<p><b>Sugestão:</b> Comece por implementar o algoritmo <i>merge-sort</i> com um único <i>thread</i>. Este algoritmo deverá usar duas funções: <code>sort()</code> e <code>merge()</code>, sendo a última invocada pela primeira.</p> 
+</LI>
+
+</OL><!--CUT END -->
+<!--HTMLFOOT-->
+<!--ENDHTML-->
+<!--FOOTER-->
+<HR SIZE=2><BLOCKQUOTE CLASS="quote"><EM>This document was translated from L<sup>A</sup>T<sub>E</sub>X by
+</EM><A HREF="http://hevea.inria.fr/index.html"><EM>H</EM><EM><FONT SIZE=2><sup>E</sup></FONT></EM><EM>V</EM><EM><FONT SIZE=2><sup>E</sup></FONT></EM><EM>A</EM></A><EM>.</EM></BLOCKQUOTE></BODY>
+</HTML>

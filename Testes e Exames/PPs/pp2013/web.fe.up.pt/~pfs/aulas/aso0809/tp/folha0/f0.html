@@ -1,0 +1,445 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"
+            "http://www.w3.org/TR/REC-html40/loose.dtd">
+<HTML>
+<HEAD>
+<TITLE>ASO 2008/09 Folha 0 (SO)</TITLE>
+
+<META http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta name="generator" content="Bluefish 1.0.7">
+<STYLE type="text/css">
+.li-itemize{margin:1ex 0ex;}
+.li-enumerate{margin:1ex 0ex;}
+.dd-description{margin:0ex 0ex 1ex 4ex;}
+.dt-description{margin:0ex;}
+.toc{list-style:none;}
+.thefootnotes{text-align:left;margin:0ex;}
+.dt-thefootnotes{margin:0em;}
+.dd-thefootnotes{margin:0em 0em 0em 2em;}
+.footnoterule{margin:1em auto 1em 0px;width:50%;}
+.caption{padding-left:2ex; padding-right:2ex; margin-left:auto; margin-right:auto}
+.title{margin:auto;text-align:center}
+.center{text-align:center;margin-left:auto;margin-right:auto;}
+.flushleft{text-align:left;margin-left:0ex;margin-right:auto;}
+.flushright{text-align:right;margin-left:auto;margin-right:0ex;}
+DIV TABLE{margin-left:inherit;margin-right:inherit;}
+PRE{text-align:left;margin-left:0ex;margin-right:auto;}
+BLOCKQUOTE{margin-left:4ex;margin-right:4ex;text-align:left;}
+TD P{margin:0px;}
+.boxed{border:1px solid black}
+.textboxed{border:1px solid black}
+.vbar{border:none;width:2px;background-color:black;}
+.hbar{border:none;height:2px;width:100%;background-color:black;}
+.hfill{border:none;height:1px;width:200%;background-color:black;}
+.vdisplay{border-collapse:separate;border-spacing:2px;width:auto; empty-cells:show; border:2px solid red;}
+.vdcell{white-space:nowrap;padding:0px;width:auto; border:2px solid green;}
+.display{border-collapse:separate;border-spacing:2px;width:auto; border:none;}
+.dcell{white-space:nowrap;padding:0px;width:auto; border:none;}
+.dcenter{margin:0ex auto;}
+.vdcenter{border:solid #FF8000 2px; margin:0ex auto;}
+.minipage{text-align:left; margin-left:0em; margin-right:auto;}
+.marginpar{border:solid thin black; width:20%; text-align:left;}
+.marginparleft{float:left; margin-left:0ex; margin-right:1ex;}
+.marginparright{float:right; margin-left:1ex; margin-right:0ex;}
+.theorem{text-align:left;margin:1ex auto 1ex 0ex;}
+.part{margin:auto;text-align:center}
+.verbatim{margin:1ex 1ex;padding:1ex;background:#EEEEEE;}
+</STYLE>
+</HEAD>
+<BODY >
+<!--HEVEA command line is: /usr/bin/hevea tp1 -->
+<!--CUT DEF section 1 --><!--TOC paragraph <FONT SIZE=4><B>Arquitecturas e Sistemas Operativos (2ª Parte)</B></FONT><FONT SIZE=4> 
+</FONT><FONT SIZE=4><B>3º Ano MIEEC</B></FONT><FONT SIZE=4><BR>
+</FONT><FONT SIZE=4><B>Folha de Problemas nº 1: Geração de Programas em C</B></FONT><FONT SIZE=4><BR>
+</FONT>-->
+<H5 CLASS="paragraph"><!--SEC ANCHOR --><FONT SIZE=4><B>Arquitecturas e Sistemas Operativos (2ª Parte)</B></FONT><FONT SIZE=4> 
+</FONT><FONT SIZE=4><B>3º Ano MIEEC</B></FONT><FONT SIZE=4><BR>
+</FONT><FONT SIZE=4><B>Folha de Problemas nº 0: Geração de Programas em C</B></FONT><FONT SIZE=4><BR>
+</FONT></H5><!--SEC END --><!--TOC section Introdução-->
+<HR>
+<H2 CLASS="section"><!--SEC ANCHOR --><A NAME="htoc1">1</A>  Introdução</H2><!--SEC END --><P>Este trabalho prático tem por objectivo principal que aprenda a gerar
+programas executáveis a partir de ficheiros com código em C usando o
+compilador de C da GNU (<CODE>gcc</CODE>) em Linux. Pretende-se ainda
+apresentar algumas ferramentas que poderão ser úteis nesse processo.</P><P>Este guião foi concebido para que execute num terminal os comandos
+indicados no texto à medida que o vai lendo.</P><!--TOC section Ferramentas de Auxílio-->
+<H2 CLASS="section"><!--SEC ANCHOR --><A NAME="htoc2">2</A>  Ferramentas de Auxílio</H2><!--SEC END --><P>Neste trabalho é-lhe sugerido que use vários comandos/programas para
+executar determinadas tarefas. Embora a sua funcionalidade seja
+explicada minimamente, muitos desses comandos são bastante complexos.
+Para obter mais informação sobre eles sugiro que use os utilitários:
+<CODE>man</CODE> e <CODE>info</CODE>. P.ex., os comandos:
+</P><BLOCKQUOTE CLASS="quote">
+<PRE CLASS="verbatim">man gcc
+info gcc
+</PRE></BLOCKQUOTE><P>
+permitem-lhe obter informação sobre o <CODE>gcc</CODE>. </P><P>O programa <CODE>man</CODE> é o utilitário básico, sendo de utilização muito
+fácil. A documentação da grande maioria dos programas em Linux está
+num formato que pode ser visualizado por <CODE>man</CODE>. </P><P>O programa <CODE>info</CODE> é um sistema de hipertexto, permitindo
+apresentar a documentação duma forma mais estruturada. Para alguns
+programas, a documentação acessível via <CODE>info</CODE> é mais completa do
+que a documentação acessível via <CODE>man</CODE>. Por outro lado,
+<CODE>info</CODE> é mais complexo porque a navegação é realizada usando
+essencialmente o teclado e não o rato. Em qualquer caso, há muitos
+programas cuja documentação só é acessível via <CODE>man</CODE>, pelo que é
+provável que tenha que usar ambos nesta disciplina.</P><P>Pode ainda usar o <CODE>yelp</CODE>, o qual é um <I>documentation
+browser and viewer</I> para o <I>Gnome Desktop</I> e que está
+instalado nos computadores do edifício B. Este programa suporta URIs
+do tipo:
+</P><BLOCKQUOTE CLASS="quote">
+<PRE CLASS="verbatim">man:gcc
+info:gcc
+</PRE></BLOCKQUOTE><P>
+apresentando a informação relativa ao comando especificado, <CODE>gcc</CODE> neste
+exemplo, acessível através do programa indicado. 
+O <CODE>yelp</CODE> pode ser invocado directamente dum terminal, p. ex. 
+</P><BLOCKQUOTE CLASS="quote">
+<PRE CLASS="verbatim">yelp info:gcc
+</PRE></BLOCKQUOTE><P>
+Alternativamente, pode ser invocado através da interface gráfica do
+<I>Gnome Desktop</I>. Uma vez numa janela do <CODE>yelp</CODE> é possível
+visualizar a documentação inserindo o URI apropriado na área de
+pesquisa.</P><!--TOC section Linguagem C-->
+<H2 CLASS="section"><!--SEC ANCHOR --><A NAME="htoc3">3</A>  Linguagem C</H2><!--SEC END --><!--TOC subsection Porquê C?-->
+<H3 CLASS="subsection"><!--SEC ANCHOR --><A NAME="htoc4">3.1</A>  Porquê C?</H3><!--SEC END --><P>Porque nos próximos trabalhos, terá que desenvolver programas em C
+usando a <I>Application Program Interface (API)</I> do sistema operativo 
+Linux.</P><!--TOC subsection Programa em C: Exemplo-->
+<H3 CLASS="subsection"><!--SEC ANCHOR --><A NAME="htoc5">3.2</A>  Programa em C: Exemplo</H3><!--SEC END --><P>C é uma linguagem baseada em funções. Do ponto de vista do programador, a execução dum programa em C começa na função <CODE>main()</CODE>:
+</P><BLOCKQUOTE CLASS="quote">
+Todos os programas em C têm que ter <B>uma e uma só</B> função <CODE>main</CODE>.
+</BLOCKQUOTE><P>O programa C mais conhecido é o famoso &#X201C;Hello World!&#X201D;:
+</P><BLOCKQUOTE CLASS="quote">
+<PRE CLASS="verbatim">#include &lt;stdio.h&gt;
+
+int main() {
+    printf("Hello World!\n");
+}
+</PRE></BLOCKQUOTE><P>
+o qual, quando executado, se limita a imprimir no ecrã a <I>string</I> <CODE>Hello World!</CODE>.</P><P><B>IMPORTANTE</B> Note o alinhamento da instrução <CODE>printf</CODE>:
+</P><BLOCKQUOTE CLASS="quote">
+Quando escrever programas em C procure alinhar o código:
+facilita a sua leitura. Muitos editores de texto oferecem um modo
+de edição de programas C, reduzindo significativamente o esforço
+do programador. O alinhamento automático tem ainda a vantagem de
+permitir detectar facilmente erros no programa, p.ex. o esquecimento
+de uma chaveta, <CODE>}</CODE>, para fechar um bloco de instruções.
+</BLOCKQUOTE><!--TOC subsection Execução dum Programa C-->
+<H3 CLASS="subsection"><!--SEC ANCHOR --><A NAME="htoc6">3.3</A>  Execução dum Programa C</H3><!--SEC END --><P>Como já deve ser do seu conhecimento, CPUs não &#X201C;entendem&#X201D;
+linguagens de alto nível, como a linguagem C.</P><P>Essencialmente, há 3 alternativas para executar um programa escrito numa
+linguagem de alto nível:
+</P><DL CLASS="description"><DT CLASS="dt-description">
+<B>traduzindo-o:</B></DT><DD CLASS="dd-description"> i.e. usando um tradutor (compilador e/ou
+<I>assembler</I>), que o converte na linguagem máquina. Esta é a
+alternativa usada pela linguagens C e C++.
+</DD><DT CLASS="dt-description"><B>interpretando-o:</B></DT><DD CLASS="dd-description"> i.e. usando um programa, o
+<I>interpretador</I>, que lê as instruções na linguagem de alto nível
+e depois as executa. Esta é a alternativa usada por algumas linguagens
+de alto nível e pelas chamadas linguagens de <I>scripting</I>, p.ex.
+Perl e <I>shell scripting languages</I>;
+</DD><DT CLASS="dt-description"><B>traduzindo-o e interpretando-o</B></DT><DD CLASS="dd-description"> i.e. combinando as duas
+alternativas anteriores. Primeiro o programa na linguagem de alto
+nível é traduzido para um programa numa linguagem intermédia que é
+depois interpretada. Esta alternativa é usada pela linguagem Java, sendo
+a linguagem intermédia conhecida por <I>bytecode</I> e o interpretador
+por <I>Java Virtual Machine (JVM)</I>.
+</DD></DL><!--TOC section Geração de Programas em C-->
+<H2 CLASS="section"><!--SEC ANCHOR --><A NAME="htoc7">4</A>  Geração de Programas em C</H2><!--SEC END --><P>Na verdade, o processo de tradução dum programa C inclui tipicamente vários
+passos. A figura seguinte ilustra os passos executados pelo compilador 
+<CODE>gcc</CODE> (<I>GNU C compiler</I>):</P><DIV CLASS="center">
+<BLOCKQUOTE CLASS="figure"><DIV CLASS="center"><HR WIDTH="80%" SIZE=2></DIV>
+<DIV CLASS="center">
+<IMG SRC="tp1001.png"></DIV>
+<A NAME="fig:compil_steps"></A>
+<DIV CLASS="caption"><TABLE CELLSPACING=6 CELLPADDING=0><TR><TD VALIGN=top ALIGN=left>Figure 1: Passos para geração do executável dum programa escrito na linguagem C.</TD></TR>
+</TABLE></DIV><DIV CLASS="center"><HR WIDTH="80%" SIZE=2></DIV></BLOCKQUOTE>
+</DIV><P>Nas subsecções seguintes descrevo cada um destes passos em
+pormenor. </P><!--TOC subsection Pré-processamento-->
+<H3 CLASS="subsection"><!--SEC ANCHOR --><A NAME="htoc8">4.1</A>  Pré-processamento</H3><!--SEC END --><P>Neste passo realiza-se um processamento puramente ao nível do texto. Essencialmente é usado para:
+</P><UL CLASS="itemize"><LI CLASS="li-itemize">
+Remover comentários;
+</LI><LI CLASS="li-itemize">Processar directivas, p.ex. <CODE>#include &lt;stdio.h&gt;</CODE>
+</LI><LI CLASS="li-itemize">Substituir macros pelo valor respectivo
+</LI></UL><P>Como indicado na Figura <A HREF="f0.html#fig:compil_steps">5</A>, este passo pode ser executado especificando a opção <CODE>-E</CODE> do <CODE>gcc</CODE>.</P><P>Usando um processador de texto, crie a seguinte variante do programa
+&#X201C;Hello World!&#X201D;:
+</P><BLOCKQUOTE CLASS="quote">
+<PRE CLASS="verbatim">#include &lt;stdio.h&gt;
+#define HELLO_STRING "Hello World!\n"
+int main() {
+    printf(HELLO_STRING); /* This is a comment */
+}
+</PRE></BLOCKQUOTE><P>
+e guarde-o num ficheiro de nome <CODE>hello.c</CODE>.</P><P>Em seguida, pré-processe-o dando o comando:
+</P><BLOCKQUOTE CLASS="quote">
+<PRE CLASS="verbatim">gcc -E hello.c -o hello.cpp_out
+</PRE></BLOCKQUOTE><P><B>Nota</B> A opção <CODE>-o</CODE> do <CODE>gcc</CODE> permite-lhe
+especificar o nome do ficheiro de saída, i.e. do ficheiro com
+resultado do processamento do <CODE>gcc</CODE>.</P><P>Abra o ficheiro de saída (<CODE>hello.cpp_out</CODE>) numa janela do seu
+editor de texto. Quantas linhas tem este ficheiro? Procure identificar o processamento que o <CODE>gcc</CODE> realizou neste passo. </P><P><B>Nota</B> Poderia determinar o número de linhas do ficheiro sem abrir o 
+ficheiro no editor de texto usando o comando:
+</P><BLOCKQUOTE CLASS="quote">
+<PRE CLASS="verbatim">wc -l hello.cpp_out
+</PRE></BLOCKQUOTE><!--TOC subsection Compilação-->
+<H3 CLASS="subsection"><!--SEC ANCHOR --><A NAME="htoc9">4.2</A>  Compilação</H3><!--SEC END --><P>Neste passo o <CODE>gcc</CODE> tranforma o ficheiro com código em C gerado no passo
+anterior num ficheiro em código <I>assembly</I>.</P><P>Durante este passo o <CODE>gcc</CODE> pode aplicar várias técnicas para
+optimização do código gerado. Estas técnicas são especificadas via a
+opção <CODE>-O#</CODE> (&#X201C;ó&#X201D; maiúsculo), onde # é o nível de optimização.
+Para mais pormenores use <CODE>info</CODE>.</P><P>Execute este passo, invocando um dos 2 seguintes comandos:
+</P><BLOCKQUOTE CLASS="quote">
+<PRE CLASS="verbatim">gcc -x cpp-output -S hello.cpp_out
+gcc -S hello.c 
+</PRE></BLOCKQUOTE><P><B>Nota</B> A opção <CODE>-x</CODE> do <CODE>gcc</CODE> permite-lhe especificar
+a linguagem do ficheiro de entrada.</P><P>O ficheiro de saída, <CODE>hello.s</CODE>, é um ficheiro ASCII e não um executável, 
+como poderá verificar usando o comando:
+</P><BLOCKQUOTE CLASS="quote">
+<PRE CLASS="verbatim">file hello.s
+</PRE></BLOCKQUOTE><P>Abra o ficheiro <CODE>hello.s</CODE> num editor de texto e tente analisá-lo.
+Que função é invocada por <CODE>hello.s</CODE>? É diferente da que estava à
+espera? Tente explicar a razão para este comportamento.
+(<B>Dica:</B> Use <CODE>man 3 fun</CODE>, onde <CODE>fun</CODE> é o nome da
+função.) Teste a sua explicação criando uma versão do programa <CODE>hello.c</CODE>
+e compilando-a..</P><!--TOC subsection <I> Assembling</I>-->
+<H3 CLASS="subsection"><!--SEC ANCHOR --><A NAME="htoc10">4.3</A>  <I> Assembling</I></H3><!--SEC END --><P>Neste passo o <CODE>gcc</CODE> converte o código em <I>assembly</I> em código
+máquina <I>recolocável</I>, i.e. de forma a que possa ser colocado em
+qualquer &#X201C;região da memória&#X201D;.</P><P>Note que o ficheiro de saída desta fase ainda não é executável:
+</P><UL CLASS="itemize"><LI CLASS="li-itemize">
+Poderá ter ainda símbolos por resolver;
+</LI><LI CLASS="li-itemize">Os endereços são relativos ao início de <CODE>main()</CODE>,
+não os <I>endereços finais</I>.
+</LI></UL><P>Execute este passo dando um dos 2 seguintes comandos:</P><BLOCKQUOTE CLASS="quote">
+<PRE CLASS="verbatim">gcc -x assembler -c hello.s
+gcc -c hello.c
+</PRE></BLOCKQUOTE><P>O ficheiro de saída, <CODE>hello.o</CODE>, contém o código máquina do
+programa, o qual normalmente contém códigos que não podem ser
+visualizado com editores de texto habituais.</P><P>De facto, este ficheiro está em formato <TT>http://en.wikipedia.org/wiki/Executable_and_Linkable_Format ELF</TT>, como poderá confirmar executando
+o comando:
+</P><BLOCKQUOTE CLASS="quote">
+<PRE CLASS="verbatim">file hello.o
+</PRE></BLOCKQUOTE><P>O comando <CODE>readelf</CODE> permite extrair informação variada sobre
+<CODE>hello.o</CODE>. Por exemplo, o <CODE>header</CODE> do ficheiro pode ser 
+visualizado usando o comando:
+</P><BLOCKQUOTE CLASS="quote">
+<PRE CLASS="verbatim">readelf -h hello.o
+</PRE></BLOCKQUOTE><P>
+Note que o campo <CODE>Entry point address</CODE> tem por valor <CODE>0x0</CODE>,
+indicando que o compilador ainda não mapeou o programa na memória,
+i.e. não decidiu da sua localização na memória.</P><P>Outra opção interessante de <CODE>readelf</CODE> é a opção <CODE>-s</CODE> a qual permite
+visualizar a tabela de símbolos. Dê o comando:
+</P><BLOCKQUOTE CLASS="quote">
+<PRE CLASS="verbatim">readelf -s hello.o
+</PRE></BLOCKQUOTE><P>
+e procure interpretar as 2 últimas linhas da tabela.</P><P>Dado um ficheiro ELF é possível visualizar o código assembly usando o
+utilitário <CODE>objdump</CODE>. Dê o comando:
+</P><BLOCKQUOTE CLASS="quote">
+<PRE CLASS="verbatim">objdump -d hello.o
+</PRE></BLOCKQUOTE><P>
+e compare a saída deste comando com <CODE>hello.s</CODE>.</P><!--TOC subsection Linking-->
+<H3 CLASS="subsection"><!--SEC ANCHOR --><A NAME="htoc11">4.4</A>  Linking</H3><!--SEC END --><P>O código dum ficheiro não tem que incluir a definição de todas as
+funções invocadas nesse ficheiro (ou das estruturas de dados usadas).
+No caso de <CODE>hello.c</CODE>, a função <CODE>printf()</CODE> embora invocada
+por <CODE>main()</CODE>, não está definida. De facto, <CODE>printf()</CODE> é
+função que faz parte da biblioteca (<I>library</I>)
+<I>standard</I> da linguagem C. Esta biblioteca, <CODE>libc</CODE>, tal
+como todas as bibliotecas, é um ficheiro num formato especial que
+inclui o código máquina recolocável de funções frequentemente usadas
+por todos os programas da linguagem C, incluindo as funções que
+implementam a API do sistema operativo. Isto permite reutilizar
+código, mesmo sem dispôr dos ficheiros com o código fonte.</P><P>Outra razão para não incluir a definição de todas as funções dum
+programa C num único ficheiro é a organização do código. Colocando
+funções relacionadas entre si num mesmo ficheiro e funções sem
+qualquer relação em ficheiros diferentes, é possível isolar
+funcionalidades dum dado programa. Esta separação é particularmente
+importante para programas complexos com milhares de linhas de código
+C.</P><P>A separação em ficheiros diferentes tem a vantagem adicional de ser
+possível compilá-los separadamente. Uma vez mais, esta vantagem é 
+particularmente importante para programas muito extensos: em vez
+de ter que compilar o programa inteiro basta compilar os
+ficheiros que são alterados.</P><P>A fragmentação do código máquina (ou objecto) por múltiplos ficheiros
+implica a necessidade dum passo adicional na geração de programas 
+executáveis para ligar esses múltiplos ficheiros num único ficheiro
+executável. Este passo é conhecido por <I>linking</I>.</P><P>Para o executar pode dar qualquer um dos seguintes comandos:</P><BLOCKQUOTE CLASS="quote">
+<PRE CLASS="verbatim">gcc -static hello.o -o hello.st 
+gcc -static hello.c -o hello.st 
+</PRE></BLOCKQUOTE><P>Como poderá confirmar, usando p.ex. o comando <CODE>file</CODE>, o ficheiro
+de saída, <CODE>hello.st</CODE> é finalmente um ficheiro executável. Execute-o:
+</P><BLOCKQUOTE CLASS="quote">
+<PRE CLASS="verbatim">./hello.st
+</PRE></BLOCKQUOTE><P>Este ficheiro usa também o formato ELF, pelo que pode usar o comando
+<CODE>readelf -h</CODE> para obter informação adicional. Compare esta
+informação com aquela obtida para <CODE>hello.o</CODE>. Pode ainda usar
+<CODE>readelf -s</CODE> para ver a tabela de símbolos. Compare-a com a de
+<CODE>hello.o</CODE>. (De facto, com alguma atenção poderá constatar que há
+ainda alguns símbolos por resolver, aqueles cuja 7ª coluna tem por
+valor <CODE>UND</CODE>, mas tal não impede o programa de executar, como
+deverá ter constatado.)</P><P>Se quiser ver o código assembly completo, mais de 100 mil linhas, pode
+usar <CODE>objdump -d hello.st</CODE> Para poder analisá-lo com um editor de
+texto, deverá redireccionar a saída para um ficheiro, como ilustrado
+(atenção que o resultado ocupa mais de 5,5 Mbytes):
+</P><BLOCKQUOTE CLASS="quote">
+<PRE CLASS="verbatim">objdump -d hello.st &gt; /tmp/hello.st.asm
+</PRE></BLOCKQUOTE><P><B>Nota</B> Em Linux, o comando <CODE>&gt;</CODE> permite redireccionar
+a saída <I>standard</I>. Neste exemplo, ela é redireccionada para o
+ficheiro <CODE>/tmp/hello.st.asm</CODE>. I.e. toda a informação que o
+programa <CODE>objdump</CODE> envia para o terminal é redireccionada para
+o ficheiro especificado.</P><P><B>Nota</B> Neste exemplo, ao contrário dos restantes, usa-se um
+ficheiro no directório <CODE>/tmp</CODE> em vez dum ficheiro no
+<I>directório corrente</I>, para evitar ultrapassar a sua quota
+máxima de disco: o espaço usado em <CODE>/tmp</CODE> não é contabilizado
+para a quota, pois tipicamente é limpo sempre que o sistema operativo
+arranca. </P><!--TOC section Bibliotecas Partilhadas-->
+<H2 CLASS="section"><!--SEC ANCHOR --><A NAME="htoc12">5</A>  Bibliotecas Partilhadas</H2><!--SEC END --><P>A opção <CODE>-static</CODE> do <CODE>gcc</CODE> instrói o <I>linker</I> para
+fazer ligação estática, como confirmado pela expressão
+<I>statically linked</I> que aparece na saída de <CODE>file</CODE>. 
+Quer isto dizer que o código necessário da biblioteca C é incluído no
+executável. Embora nem toda a biblioteca
+C seja ligada com <CODE>hello.o</CODE> para criar <CODE>hello.st</CODE>, como
+poderá constatar através da saída gerada pelo seguinte comando:
+</P><BLOCKQUOTE CLASS="quote">
+<PRE CLASS="verbatim">ls -l hello.st /usr/lib/libc.a
+</PRE></BLOCKQUOTE><P>
+o tamanho dum programa tão simples com o <CODE>hello.c</CODE> com ligação estática
+deveria surpreendê-lo.</P><P>Determine o tamanho do programa mínimo:
+</P><BLOCKQUOTE CLASS="quote">
+<PRE CLASS="verbatim">void main(){
+}
+</PRE></BLOCKQUOTE><P>
+após compilação com ligação estática. </P><P>Estes dois exemplos mostram que a ligação estática exige muita
+memória, quer disco (para guardar os programas) quer principal.</P><P>Estime o espaço mínimo em disco necessário para guardar todos os
+programas existentes no directório <CODE>/usr/bin</CODE>. Para determinar o
+número de programas nesse directório pode executar o comando:
+</P><BLOCKQUOTE CLASS="quote">
+<PRE CLASS="verbatim">ls /usr/bin | wc -l
+</PRE></BLOCKQUOTE><P><B>Nota</B> O comando <CODE>|</CODE> designa-se por <I>pipe</I> e envia
+a saída do primeiro comando, <CODE>ls</CODE> neste exemplo, para a entrada
+do segundo, <CODE>wc</CODE>. Como o primeiro comando lista na saída o
+conteúdo do directório especificado, 1 ficheiro por linha, e o segundo
+determina o número de linhas na sua entrada, este comando composto
+permite determinar o número de ficheiros no directório
+<CODE>/usr/bin</CODE>, o qual é usado para guardar a maioria dos programas
+em Linux.</P><P>Compare este valor com o espaço efectivamente ocupado em disco por este
+directório, o qual pode ser obtido através do comando:
+</P><BLOCKQUOTE CLASS="quote">
+<PRE CLASS="verbatim">du -sh /usr/bin
+</PRE></BLOCKQUOTE><P>
+Consegue explicar a diferença?</P><P>De facto, a principal razão para esta diferença é que os programas em
+<CODE>/usr/bin</CODE> usam ligação dinâmica e não ligação estática. Com
+ligação dinâmica, o <CODE>gcc</CODE> não inclui o código das bibliotecas no
+executável. A resolução das referências para símbolos das bibliotecas
+partilhadas é feita apenas quando o programa inicia a sua execução
+pelo <I>dynamic linker/loader</I> (<CODE>/lib/ld-linux.so</CODE>). </P><P>O uso de ligação dinâmica permite que uma biblioteca seja partilhada
+por vários programas quando executam simultaneamente, como ilustrado
+na Figura. Assim, em Linux as bibliotecas usadas para ligação dinâmica
+são conhecidas por bibliotecas partilhadas e, por convenção, os seus nomes
+têm por extensão <CODE>so</CODE>, as iniciais de <I>shared object</I>. Em Windows
+as bibliotecas partilhadas são conhecidas por <I>dynamic linking
+libraries</I> ou apenas <I>dll</I>s.</P><DIV CLASS="center">
+<BLOCKQUOTE CLASS="figure"><DIV CLASS="center"><HR WIDTH="80%" SIZE=2></DIV>
+<DIV CLASS="center">
+<IMG SRC="tp1002.png"></DIV>
+<A NAME="fig:shared_lib"></A>
+<DIV CLASS="caption"><TABLE CELLSPACING=6 CELLPADDING=0><TR><TD VALIGN=top ALIGN=left>Figure 2: Partilha duma biblioteca partilhada por 2 processos.</TD></TR>
+</TABLE></DIV><DIV CLASS="center"><HR WIDTH="80%" SIZE=2></DIV></BLOCKQUOTE>
+</DIV><P>Compile o programa <CODE>hello</CODE> usando ligação dinâmica, dando o
+comando:
+</P><BLOCKQUOTE CLASS="quote">
+<PRE CLASS="verbatim">gcc hello.c -o hello 
+</PRE></BLOCKQUOTE><P>
+Note que por omissão <CODE>gcc</CODE> usa ligação dinâmica. Qual o tamanho do 
+executável, <CODE>hello</CODE>?</P><P>O formato do ficheiro com o código ligado dinamicamente continua a ser
+o ELF, pelo que pode usar o comando <CODE>readelf</CODE> como anteriormente.
+Note ainda que como <CODE>hello</CODE> é um ficheiro ligado dinamicamente
+tem agora uma secção adicional (<I>Dynamic section</I>) que pode
+visualizar dando o comando <CODE>readelf -d</CODE>.</P><P>Compare a secção dinâmica dos ficheiros <CODE>hello.st</CODE> e 
+<CODE>hello</CODE>.</P><P>Para determinar as bibliotecas partilhadas usadas por <CODE>hello</CODE> pode 
+usar o comando:
+</P><BLOCKQUOTE CLASS="quote">
+<PRE CLASS="verbatim">ldd hello
+</PRE></BLOCKQUOTE><P>Note que o próprio <I>dynamic linker/loader</I> se encontra numa
+biblioteca partilhada. Vê algum problema? Qual? </P><!--TOC section Outras Opções do <TT>gcc</TT>-->
+<H2 CLASS="section"><!--SEC ANCHOR --><A NAME="htoc13">6</A>  Outras Opções do <TT>gcc</TT></H2><!--SEC END --><P>Além das opções usadas acima o <CODE>gcc</CODE> oferece várias outras
+opções. Particularmente úteis para esta disciplina são as seguintes:
+</P><DL CLASS="description"><DT CLASS="dt-description">
+<B><TT>-Wall</TT></B></DT><DD CLASS="dd-description"> esta opção faz com que o <CODE>gcc</CODE> gere avisos
+(<I>warnings</I>) sempre que detecte usos da linguagem C que,
+embora correctos, podem conduzir a erros. Como mencionado acima, a
+linguagem C dá muita liberdade ao programador. Ao permitir que os
+programadores façam certas coisas que noutras linguagens não são
+permitidas, C aumenta a possibilidade de erro dos programadores.
+Assim, recomendo que use sempre esta opção e corrija o seu código
+até que o <CODE>gcc</CODE> o compile sem qualquer aviso. (Maior liberdade
+requer maior responsabilidade!)
+</DD><DT CLASS="dt-description"><B><TT>-g</TT></B></DT><DD CLASS="dd-description"> esta opção faz com que o <CODE>gcc</CODE> acrescente 
+código para permitir a depuração (<I>debugging</I>) do seu programa
+usando o <CODE>gdb</CODE> (o <I>GNU debugger</I>). Embora o uso dum
+<I>debugger</I> possa auxiliar bastante na localização de erros, 
+ser descuidado na programação não compensa: o tempo adicional exigido
+por uma programação cuidada é normalmente muito menor do que o 
+exigido para fazer o <I>debugging</I> que resulta duma atitude
+descuidada.
+</DD></DL><!--TOC section <TT>make</TT>-->
+<H2 CLASS="section"><!--SEC ANCHOR --><A NAME="htoc14">7</A>  <TT>make</TT></H2><!--SEC END --><P>Como mencionado acima, uma das vantagens de poder gerar um executável
+a partir de vários ficheiros é reduzir o processamento necessário após
+alteração no código em C em alguns desses ficheiros: em vez de ter que
+compilar todo o código, basta compilar os ficheiros alterados e
+ligá-los com os restantes.</P><P>Para programas grandes, que resultam da ligação de dezenas (ou mais)
+de ficheiros, determinar quais os ficheiros que devem ser recompilados
+após alteração de outros ficheiros é uma tarefa dada a erros. O
+utilitário <CODE>make</CODE> é um programa que permite gerar duma forma
+automática novos executáveis por compilação apenas dos ficheiros que
+foram alterados (ou daqueles que deles dependem).</P><P>Para isso o <CODE>make</CODE> usa como entrada um ficheiro, cujo nome é
+tipicamente <CODE>makefile</CODE> ou <CODE>Makefile</CODE>, que contém um conjunto
+de regras especificando as dependências entre ficheiros e quais os comandos
+que é necessário executar para a sua geração. Na sua forma mais simples, estas regras têm o seguinte
+formato:</P><BLOCKQUOTE CLASS="quote">
+<PRE CLASS="verbatim">target: dep1 dep2 ... depn
+      command
+</PRE></BLOCKQUOTE><P>Essencialmente, esta regra indica que o ficheiro de nome <CODE>target</CODE>
+depende dos ficheiros <CODE>dep1</CODE>,<CODE>dep2</CODE>, ..., <CODE>depn</CODE>.
+<CODE>command</CODE> é o comando que deve ser executado para gerar
+<CODE>target</CODE>, e normalmente toma como argumentos todos os ficheiros
+<CODE>dep1</CODE>, <CODE>dep2</CODE>, ... <CODE>depn</CODE>. <B>Note</B> que
+<CODE>command</CODE> <B>tem que</B> ser precedido por um <I>tab</I> e
+não por uma sequência de espaços. Alguns editores substituem
+<I>tabs</I> por sequências de espaços, gerando <I>makefiles</I> com
+um formato incorrecto e dandi origem a erros.</P><P>Note que qualquer dos ficheiros à direita do <CODE>:</CODE> na regra acima,
+pode aparecer à esquerda do <CODE>:</CODE> noutra regra. Desta forma, a
+alteração dum único ficheiro pode conduzir à execução de vários
+comandos. A única restrição é que não se devem criar ciclos, doutra
+maneira o <CODE>make</CODE> poderá entrar num ciclo infinito e não mais 
+terminar. </P><P>Teste se <CODE>make</CODE> entra de facto num ciclo infinito ou se
+consegue detectar essa situação e assinala um erro.</P><P>O exemplo seguinte é desnecessariamente complicado, mas ilustra uma
+<I>makefile</I> que poderia ser usada neste trabalho:</P><BLOCKQUOTE CLASS="quote">
+<PRE CLASS="verbatim">hello.cpp_out: hello.c
+ gcc -E hello.c -o hello.cpp_out
+
+hello.s: hello.cpp_out
+ gcc -x cpp-output -S hello.cpp_out
+
+hello.o: hello.s
+ gcc -c hello.s
+
+hello.st: hello.o
+ gcc -static hello.o -o hello.st
+
+hello: hello.o
+ gcc hello.o -o hello
+
+clean:
+ rm -f hello.o hello.s hello.cpp_out
+
+clean_all: clean
+ rm -f hello hello.st 
+</PRE></BLOCKQUOTE><P>As duas últimas regras permitem eliminar os ficheiros resultantes da
+compilação.</P><P>Execute o programa <CODE>make</CODE> dando o comando:
+</P><BLOCKQUOTE CLASS="quote">
+<PRE CLASS="verbatim">make target
+</PRE></BLOCKQUOTE><P>
+onde <CODE>target</CODE> pode ser qualquer dos <I>targets</I> da <I>makefile</I>.</P><P>De facto, o formato duma <I>makefile</I> pode ser bem mais
+complicado do que o ilustrado acima. As funcionalidades adicionais são
+particularmente úteis para programas complexos. Nesta disciplina,
+desenvolverá apenas programas pequenos, pelo que nos limitaremos à
+sintaxe mais básica. Se estiver interessado pode ler a documentação
+acessível via <CODE>info</CODE>, ou um dos muitos tutoriais disponíveis na
+Web, p.ex. <TT>http://www.eng.hawaii.edu/Tutor/Make/index.html</TT>.</P><!--CUT END -->
+<!--HTMLFOOT-->
+<!--ENDHTML-->
+<!--FOOTER-->
+<HR SIZE=2><BLOCKQUOTE CLASS="quote"><EM>This document was translated from L<sup>A</sup>T<sub>E</sub>X by
+</EM><A HREF="http://hevea.inria.fr/index.html"><EM>H</EM><EM><FONT SIZE=2><sup>E</sup></FONT></EM><EM>V</EM><EM><FONT SIZE=2><sup>E</sup></FONT></EM><EM>A</EM></A><EM>.</EM></BLOCKQUOTE></BODY>
+</HTML>

@@ -1,0 +1,163 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"
+            "http://www.w3.org/TR/REC-html40/loose.dtd">
+<HTML>
+<HEAD>
+<TITLE>SO 2010/2011: Folha 2</TITLE>
+
+<META http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta name="generator" content="Bluefish 1.0.7">
+<STYLE type="text/css">
+.li-itemize{margin:1ex 0ex;}
+.li-enumerate{margin:1ex 0ex;}
+.dd-description{margin:0ex 0ex 1ex 4ex;}
+.dt-description{margin:0ex;}
+.toc{list-style:none;}
+.thefootnotes{text-align:left;margin:0ex;}
+.dt-thefootnotes{margin:0em;}
+.dd-thefootnotes{margin:0em 0em 0em 2em;}
+.footnoterule{margin:1em auto 1em 0px;width:50%;}
+.caption{padding-left:2ex; padding-right:2ex; margin-left:auto; margin-right:auto}
+.title{margin:2ex auto;text-align:center}
+.center{text-align:center;margin-left:auto;margin-right:auto;}
+.flushleft{text-align:left;margin-left:0ex;margin-right:auto;}
+.flushright{text-align:right;margin-left:auto;margin-right:0ex;}
+DIV TABLE{margin-left:inherit;margin-right:inherit;}
+PRE{text-align:left;margin-left:0ex;margin-right:auto;}
+BLOCKQUOTE{margin-left:4ex;margin-right:4ex;text-align:left;}
+TD P{margin:0px;}
+.boxed{border:1px solid black}
+.textboxed{border:1px solid black}
+.vbar{border:none;width:2px;background-color:black;}
+.hbar{border:none;height:2px;width:100%;background-color:black;}
+.hfill{border:none;height:1px;width:200%;background-color:black;}
+.vdisplay{border-collapse:separate;border-spacing:2px;width:auto; empty-cells:show; border:2px solid red;}
+.vdcell{white-space:nowrap;padding:0px;width:auto; border:2px solid green;}
+.display{border-collapse:separate;border-spacing:2px;width:auto; border:none;}
+.dcell{white-space:nowrap;padding:0px;width:auto; border:none;}
+.dcenter{margin:0ex auto;}
+.vdcenter{border:solid #FF8000 2px; margin:0ex auto;}
+.minipage{text-align:left; margin-left:0em; margin-right:auto;}
+.marginpar{border:solid thin black; width:20%; text-align:left;}
+.marginparleft{float:left; margin-left:0ex; margin-right:1ex;}
+.marginparright{float:right; margin-left:1ex; margin-right:0ex;}
+.theorem{text-align:left;margin:1ex auto 1ex 0ex;}
+.part{margin:2ex auto;text-align:center}
+</STYLE>
+</HEAD>
+<BODY >
+<!--HEVEA command line is: /usr/bin/hevea f2.tex -->
+<!--CUT DEF section 1 --><!--TOC paragraph <FONT SIZE=4><B>Arquitecturas e Sistemas Operativos (2ª Parte)</B></FONT><FONT SIZE=4> 
+</FONT><FONT SIZE=4><B>3º Ano MIEEC</B></FONT><FONT SIZE=4><BR>
+ </FONT><FONT SIZE=4><B>Folha de Problemas nº 2: Ficheiros em Linux/Unix</B></FONT><FONT SIZE=4><BR>
+</FONT>-->
+<H5 CLASS="paragraph"><!--SEC ANCHOR --><FONT SIZE=4><B>Sistemas Operativos</B></FONT><FONT SIZE=4> 
+</FONT><FONT SIZE=4><B>3º Ano MIEEC</B></FONT><FONT SIZE=4><BR>
+ </FONT><FONT SIZE=4><B>Folha de Problemas nº 2: Ficheiros em Linux/Unix</B></FONT><FONT SIZE=4><BR>
+</FONT></H5><!--SEC END -->
+<HR SIZE=2><!--TOC section Questões-->
+<H2 CLASS="section"><!--SEC ANCHOR -->Questões</H2><!--SEC END --><OL CLASS="enumerate" type=1><LI CLASS="li-enumerate">Os sistemas operativos (SO) são frequentemente apresentados quer como uma <B>máquina virtual</B> quer como uma <B>gestor de recursos</B>. Explique cada uma destas facetas dum SO.</LI><LI CLASS="li-enumerate">Uma das abstracções suportadas por um SO é o de processo. Diga o que é um processo? Descreva dois serviços dum SO relacionados com a gestão de processos.</LI><LI CLASS="li-enumerate">Sobre chamadas ao sistema<OL CLASS="enumerate" type=a><LI CLASS="li-enumerate">
+O que é uma chamada ao sistema?
+</LI><LI CLASS="li-enumerate">Porque razão a implementação duma chamada ao sistema exige instruções não necessárias na implementação de funções?
+</LI><LI CLASS="li-enumerate">No entanto, do ponto de vista sintático, para um programador, uma chamada ao sistema parece ser uma função. Porquê?
+</LI></OL></LI></OL><!--TOC section Problemas-->
+<HR SIZE=2>
+<H2 CLASS="section"><!--SEC ANCHOR -->Problemas</H2><!--SEC END --><!--TOC paragraph IMP.-->
+<P><B><!--SEC ANCHOR -->IMP.</B> Os seus programas deverão usar as <B>chamadas ao
+sistema</B> para acesso a ficheiros e <B>não</B> as funções de
+manipulação de <I>streams</I> da biblioteca C.</P>
+
+<OL CLASS="enumerate" type=1>
+
+<LI CLASS="li-enumerate">Considere a cópia de um ficheiro.
+<OL CLASS="enumerate" type=a><LI CLASS="li-enumerate">
+Escreva um programa que faz a cópia do ficheiro cujo nome lhe
+é passado como primeiro argumento para a saída <I>standard</I>, à
+semelhança do utilitário <TT>cat</TT> quando invocado com um único
+argumento.<P>No final o seu programa deverá imprimir o comprimento total do ficheiro.
+(Confirme o resultado usando o comando <TT>wc -c</TT>.)</P><P><B>IMP</B> Para garantir que a chamada ao sistema <TT>read</TT>
+tem que ser invocada múltiplas vezes use <I>buffers</I> de
+tamanho reduzido, p.ex. 256 bytes, e teste os seus programas com
+o código C respectivo.</P></LI>
+
+<LI CLASS="li-enumerate">Escreva uma versão do programa da alínea anterior tal que
+copia o ficheiro cujo nome lhe é passado como primeiro argumento
+para um ficheiro cujo nome lhe é passado com segundo argumento.<P><B>IMP.</B> O seu programa deverá assinalar erro se o segundo
+argumento for o nome dum ficheiro que já existe.</P><P>Confirme o resultado do seu programa usando o comando <TT>diff</TT>.</P></LI>
+</OL>
+<P><B>Sugestão</B> Leia <a href="../../so2001/ap/cap2.pdf">as Secções 2.1 e 2.3 das notas do Prof. Pimenta Monteiro sobre ficheiros</a>, bem como as <i>man pages</i> das chamadas ao sistema nelas descritas.</P>
+</LI>
+
+<LI CLASS="li-enumerate">O utilitário <TT>split</TT> parte um ficheiro em múltiplos ficheiros
+(para mais pormenores consulte a sua <I>man page</I>).<P>Escreva o programa <TT>merge</TT> o qual reconstrói um ficheiro a
+partir dos ficheiros gerados por <TT>split</TT>. Assume-se que estes
+ficheiros se encontram no directório onde <TT>merge</TT> é invocado.</P><P><TT>merge</TT> deve ser invocado da seguinte maneira:</P><BLOCKQUOTE CLASS="quote">
+<PRE CLASS="verbatim">       merge &lt;prefix&gt; 
+</PRE></BLOCKQUOTE><P>Onde
+</P><BLOCKQUOTE CLASS="quote">
+<CODE>&lt;prefix&gt;</CODE> é o prefixo usado como argumento de <CODE>split</CODE>.
+</BLOCKQUOTE><P>O nome do ficheiro criado por <CODE>merge</CODE> deverá ser <CODE>&lt;prefix&gt;mrg</CODE>.</P><P><B>Sugestão</B>: Use as funções de manipulação de <I>strings</I> da
+biblioteca C (<TT>man 3 string</TT>).</P>
+</LI>
+
+<LI CLASS="li-enumerate">Considere as seguintes declarações:<BLOCKQUOTE CLASS="quote">
+<PRE CLASS="verbatim">typedef char nome[30];
+typedef struct {
+        nome al;
+        int notas[3];
+} teste_t;
+</PRE></BLOCKQUOTE>
+
+<OL CLASS="enumerate" type=a>
+<LI CLASS="li-enumerate">
+Escreva um programa que crie um ficheiro &#X201C;binário&#X201D; que
+armazene registos do tipo <CODE>teste_t</CODE>, i.e. as classificações
+num teste com 3 perguntas. Os campos de cada registo deverão ser
+perguntados ao utilizador. O seu programa deverá tomar como
+argumento o nome do ficheiro, o qual já pode existir.
+</LI>
+<LI CLASS="li-enumerate">Escreva um programa que leia um ficheiro criado pelo programa
+da alínea anterior, e escreva na saída os valores dos campos de cada
+registo, um registo por linha.
+</LI>
+</OL>
+</LI>
+
+<LI CLASS="li-enumerate">Escreva o programa <CODE>sample</CODE> o qual &#X201C;amostra&#X201D; um ficheiro.<P>Este programa deve ser invocado da seguinte forma:</P><PRE CLASS="verbatim">     sample &lt;filename&gt; &lt;offset&gt;
+</PRE><P>onde
+</P><BLOCKQUOTE CLASS="quote">
+<CODE>&lt;filename&gt;</CODE> é o nome do ficheiro a amostrar;<BR>
+ <CODE>&lt;offset&gt;</CODE> é o deslocamento em relação ao princípio do ficheiro
+da amostra.
+</BLOCKQUOTE><P>O tamanho da amostra deve ser igual a um décimo do comprimento do
+ficheiro amostrado, a menos que o deslocamento especificado determine
+um valor inferior. A amostra deve ser escrita num ficheiro cujo nome é
+<CODE>&lt;filename&gt;.smpl</CODE>.</P>
+
+<P><B>Sugestão</B> Para determinar o tamanho do ficheiro poderá 
+usar uma das chamadas ao sistema <CODE>stat()</CODE>, <CODE>fstat()</CODE> ou
+<CODE>lstat()</CODE>. Leia a sua <i>man page</i> bem como as <a href="../../so2001/ap/cap2.pdf">páginas 13 e 14 da Secção 2.5 das notas do Prof. Pimenta Monteiro sobre ficheiros</a></P>
+
+<P><B>Sugestão</B> Para avançar o <I>cursor</I> do ficheiro poderá usar a
+chamada ao sistema <CODE>lseek</CODE>. Leia a sua <i>man page</i> bem como a <a href="../../so2001/ap/cap2.pdf">sua descrição na Secção 2.3 das notas do Prof. Pimenta Monteiro sobre ficheiros</a></P></LI>
+
+<LI CLASS="li-enumerate"> Considere o problema 1, acima. Escreva uma nova versão a qual deverá comportar-se como descrito ou em a. ou em b. desse problema, dependendo do número de argumentos da linha de comando. </p>
+<P><B>IMPORTANTE</B> A sua solução tem que usar a chamada ao sistema <CODE>dup2()</CODE>. Leia a sua <i>man page</i> bem como a <a href="../../so2001/ap/cap2.pdf">Secção 2.1 das notas do Prof. Pimenta Monteiro sobre ficheiros</a></P>
+</LI>
+<!--LI CLASS="li-enumerate">Neste problema pretende-se escrever um programa que copia um ficheiro, tal como no problema 1, mas que usa mapeamento de ficheiros em memória.
+<OL CLASS="enumerate" type=a><LI CLASS="li-enumerate">
+Atendendo a que a implementação de <TT>mmap()/munmap()</TT> em
+Linux não permite alterar o comprimento dum ficheiro mapeado,
+escreva um programa que cria um ficheiro, cujo nome lhe é
+passado no primeiro argumento, com o comprimento que é especificado
+no seu segundo argumento.<P><B>Dica</B> Basta escrever um carácter na última posição do ficheiro.</P><P><B>Sugestão</B> Use a chamada ao sistema <CODE>lseek()</CODE>.</P><P>Use o comando <TT>wc -c</TT> para testar o seu programa.</P></LI><LI CLASS="li-enumerate">Escreva uma versão do programa do problema 1 usando as
+chamadas ao sistema que fazem o mapeamento de ficheiros no espaço
+de memória.<P><B>Sugestão:</B> Use a chamada ao sistema <TT>stat</TT> para determinar
+o comprimento do ficheiro a copiar.</P><P>Teste o seu programa usando o comando <TT>diff</TT>.
+</P></LI--></OL>
+</LI></OL><!--CUT END -->
+<!--HTMLFOOT-->
+<!--ENDHTML-->
+<!--FOOTER-->
+<HR SIZE=2><BLOCKQUOTE CLASS="quote"><EM>This document was translated from L<sup>A</sup>T<sub>E</sub>X by
+</EM><A HREF="http://hevea.inria.fr/index.html"><EM>H</EM><EM><FONT SIZE=2><sup>E</sup></FONT></EM><EM>V</EM><EM><FONT SIZE=2><sup>E</sup></FONT></EM><EM>A</EM></A><EM>.</EM></BLOCKQUOTE></BODY>
+</HTML>
