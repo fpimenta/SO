@@ -41,13 +41,17 @@ int main(){
     X * data;
     data = (X *) malloc(sizeof(X)*10);
     char buf[255];
-    register int nfiles = 0;
+    register int nfiles = 0, space = 10;
     
    
     while(scanf(" %s", buf ) == 1){
             data[nfiles].file = (char*)malloc(sizeof(char*)*255);
             strcpy(data[nfiles].file, buf);
-            nfiles++;
+            nfiles++;space--;
+            if( space == 1){
+                   data = (X*) realloc(data,sizeof(data)+sizeof(X)*10);
+                   space = 10;
+            }    
     }   
     pthread_t idT[nfiles];
     for(int i = 0; i < nfiles;i++){
